@@ -1,0 +1,53 @@
+body{
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1{
+    margin-bottom: 15px;
+}
+
+.boton-agregar{
+    margin-bottom: 15px;
+    padding: 8px 14px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td{
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+th{
+    background-color: #f4f4f4;
+}
+
+button{
+    padding: 5px 8px;
+    margin: 2px;
+    cursor: pointer;
+    border: none;
+}
+
+.ver{
+    background-color: #3498db;
+    color: white;
+}
+
+.editar{
+    background-color: #f1c40f;
+}
+
+.eliminar{
+    background-color: #e74c3c;
+    color: white;
+}
