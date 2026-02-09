@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administración de Productos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>Administración de Productos</h1>
+
+    <div class="buscador">
+        
+    <input type="text" id="buscador" placeholder="Buscar producto...">
+    <button onclick="buscarProductos()">Buscar</button>
+    <button onclick="cargarProductos()">Limpiar</button>
+    </div>
+
+    <div class="filtros">
+    <select id="select-categoria" onchange="filtrarPorCategoria()">
+        <option value="">Todas las categorías</option>
+    </select>
+    </div>
+<button onclick="window.location.href='agregar.html'"> Agregar producto </button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-productos">
+            <!-- productos -->
+        </tbody>
+    </table>
+
+    <div class="paginacion">
+    <button onclick="paginaAnterior()">Anterior</button>
+    <span id="info-pagina">Página 1</span>
+    <button onclick="paginaSiguiente()">Siguiente</button>
+</div>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
