@@ -63,6 +63,7 @@ body {
 .controles input,
 .controles select {
     flex: 1;
+    min-width: 200px;
 }
 
 .controles button {
@@ -71,6 +72,7 @@ body {
     border: none;
     cursor: pointer;
     transition: 0.3s;
+    min-width: 100px;
 }
 
 .controles button:hover {
@@ -82,6 +84,7 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
+    min-height: 400px;
 }
 
 /* ===== CARD ===== */
@@ -138,13 +141,24 @@ body {
     background: #2ed573;
     color: #fff;
     border: none;
-    padding: 8px 15px;
+    padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .paginacion button:hover {
     background: #20bf6b;
+}
+
+.paginacion button:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+}
+
+.paginacion span {
+    font-weight: bold;
+    color: #fff;
 }
 
 /* ===== MODAL ===== */
@@ -159,10 +173,15 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 100;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s, visibility 0.3s;
 }
 
 .modal.hidden {
     display: none;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .contenido-modal {
@@ -174,6 +193,8 @@ body {
     width: 90%;
     text-align: center;
     position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .contenido-modal img {
@@ -187,7 +208,8 @@ body {
 }
 
 .contenido-modal p {
-    margin: 5px 0;
+    margin: 8px 0;
+    text-align: left;
 }
 
 /* ===== BOTÓN CERRAR ===== */
@@ -195,18 +217,29 @@ body {
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
+    line-height: 1;
+}
+
+.cerrar:hover {
+    color: #ff4757;
 }
 
 /* ===== LOADER ===== */
-#loader {
+#cargador {
     text-align: center;
-    padding: 20px;
+    padding: 40px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* ===== FOOTER ===== */
@@ -216,3 +249,21 @@ body {
     font-size: 0.9rem;
     opacity: 0.9;
 }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .controles {
+        flex-direction: column;
+    }
+    
+    .controles input,
+    .controles select,
+    .controles button {
+        width: 100%;
+    }
+    
+    .grid-cartas {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
