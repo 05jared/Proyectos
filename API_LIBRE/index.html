@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon TCG - Buscador de Cartas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="contenedor">
+
+    <header class="encabezado">
+        <h1>Pokémon TCG - Buscador de Cartas</h1>
+        <p class="subtitulo">Explora y busca cartas del Trading Card Game</p>
+    </header>
+
+    <div class="controles">
+        <input 
+            type="text" 
+            id="inputBusqueda" 
+            placeholder="Buscar por nombre..."
+        >
+
+        <select id="filtroTipo">
+        <option value="">Todos los tipos</option>
+        <option value="Fire">Fuego</option>
+        <option value="Water">Agua</option>
+        <option value="Grass">Planta</option>
+        <option value="Lightning">Eléctrico</option>
+        <option value="Psychic">Psíquico</option>
+        <option value="Darkness">Oscuro</option>
+        <option value="Fighting">Lucha</option>
+        <option value="Metal">Metal</option>
+        <option value="Fairy">Hada</option>
+        <option value="Dragon">Dragón</option>
+        <option value="Colorless">Incoloro</option>
+        </select>
+
+
+        <button onclick="buscarCartas()">Buscar</button>
+    </div>
+
+    <div id="cargador" class="hidden">Cargando...</div>
+
+    <div id="contenedorCartas" class="grid-cartas"></div>
+
+    <div class="paginacion">
+        <button onclick="paginaAnterior()">← Anterior</button>
+        <span id="infoPagina">Página 1</span>
+        <button onclick="paginaSiguiente()">Siguiente →</button>
+    </div>
+
+    <div id="modalDetalle" class="modal hidden">
+        <div class="contenido-modal">
+            <span onclick="cerrarModal()" class="cerrar">&times;</span>
+            <div id="detallesCarta"></div>
+        </div>
+    </div>
+
+    <footer class="pie-pagina">
+        <p>Creado con Pokémon TCG API</p>
+    </footer>
+
+</div>
+
+<script src="poke.js"></script>
+</body>
+</html>

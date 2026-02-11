@@ -1,0 +1,218 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* ===== BODY ===== */
+body {
+    background: linear-gradient(135deg, #5f72ff, #9b59b6);
+    min-height: 100vh;
+    color: #fff;
+}
+
+/* ===== CONTENEDOR ===== */
+.contenedor {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* ===== ENCABEZADO ===== */
+.encabezado {
+    text-align: center;
+    background: #ffffff;
+    color: #333;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.encabezado h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.subtitulo {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* ===== CONTROLES ===== */
+.controles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.controles input,
+.controles select,
+.controles button {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+}
+
+.controles input,
+.controles select {
+    flex: 1;
+}
+
+.controles button {
+    background: #ff4757;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.controles button:hover {
+    background: #e84118;
+}
+
+/* ===== GRID DE CARTAS ===== */
+.grid-cartas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: #ffffff;
+    color: #333;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.card button {
+    background: #1e90ff;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card button:hover {
+    background: #0a3d62;
+}
+
+/* ===== PAGINACIÓN ===== */
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.paginacion button {
+    background: #2ed573;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.paginacion button:hover {
+    background: #20bf6b;
+}
+
+/* ===== MODAL ===== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.contenido-modal {
+    background: #fff;
+    color: #333;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+}
+
+.contenido-modal img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.contenido-modal h2 {
+    margin-bottom: 10px;
+}
+
+.contenido-modal p {
+    margin: 5px 0;
+}
+
+/* ===== BOTÓN CERRAR ===== */
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* ===== LOADER ===== */
+#loader {
+    text-align: center;
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ===== FOOTER ===== */
+.pie-pagina {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
