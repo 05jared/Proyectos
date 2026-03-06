@@ -8,14 +8,14 @@
 </head>
 <body>
 
-<!-- ===================== HEADER ===================== -->
+
 <header class="barra-superior">
-  <div class="barra-logo"><span>🏥</span><span>Consultorio UTHH</span></div>
+  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
   <nav class="menu-principal">
-    <a href="index.html">🏠 Inicio</a>
-    <a href="consultas.html">📋 Consultas</a>
-    <a href="listado.html">👥 Pacientes</a>
-    <a href="registro.html">➕ Registrar</a>
+    <a href="index.html"> Inicio</a>
+    <a href="consultas.html"> Consultas</a>
+    <a href="listado.html"> Pacientes</a>
+    <a href="registro.html"> Registrar</a>
     <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
   </nav>
   <a href="perfil.html" class="usuario-link">
@@ -27,7 +27,6 @@
 
   <h2 style="text-align:center; color:#0f4c45; margin-bottom:24px;">Datos del Paciente</h2>
 
-  <!-- JS llenará el nombre completo del paciente -->
   <div class="card">
     <div class="card-titulo" id="paciente-nombre-completo"></div>
 
@@ -78,19 +77,19 @@
       </div>
       <div class="detalle-item">
         <label>Edad</label>
-        <!-- JS llenará con el campo "edad" que calcula la API -->
+
         <span id="pac-edad"></span>
       </div>
       <div class="detalle-item">
         <label>Total de Consultas</label>
-        <!-- JS llenará con el campo "total_consultas" de la API -->
+
         <span id="pac-consultas"></span>
       </div>
     </div>
 
     <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
       <a href="listado.html" class="btn btn-volver">← Regresar a la lista</a>
-      <a id="btn-editar" href="#" class="btn btn-editar">✏️ Editar paciente</a>
+      <a id="btn-editar" href="#" class="btn btn-editar"> Editar paciente</a>
     </div>
   </div>
 

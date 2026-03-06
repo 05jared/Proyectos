@@ -11,10 +11,10 @@
 <header class="barra-superior">
   <div class="barra-logo"><span>🏥</span><span>Consultorio UTHH</span></div>
   <nav class="menu-principal">
-    <a href="plantilla.html">🏠 Inicio</a>
-    <a href="consultas.html">📋 Consultas</a>
-    <a href="Listado.html">👥 Pacientes</a>
-    <a href="registrar_usuarios.html">➕ Registrar</a>
+    <a href="plantilla.html"> Inicio</a>
+    <a href="consultas.html"> Consultas</a>
+    <a href="Listado.html"> Pacientes</a>
+    <a href="registrar_usuarios.html"> Registrar</a>
     <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
   </nav>
   <a href="perfil.html" class="usuario-link">👤 <span id="usuario-nombre"></span></a>
@@ -23,37 +23,37 @@
 <main style="padding:30px 20px; display:flex; justify-content:center;">
   <div class="card" style="width:100%; max-width:750px;">
 
-    <h2 class="card-titulo">✏️ Editar Consulta <span id="consulta-id"></span></h2>
+    <h2 class="card-titulo"> Editar Consulta <span id="consulta-id"></span></h2>
 
     <div id="alerta" class="alerta" style="display:none;"></div>
 
     <div class="form-grupo">
-      <label>👤 Paciente</label>
-      <!-- Solo lectura, no se puede cambiar el paciente de una consulta -->
+      <label> Paciente</label>
+
       <input type="text" id="con-paciente" readonly>
     </div>
     <div class="form-grid-2">
       <div class="form-grupo">
-        <label>📅 Fecha <span style="color:#9e1b34;">*</span></label>
+        <label> Fecha <span style="color:#9e1b34;">*</span></label>
         <input type="date" id="con-fecha">
       </div>
       <div class="form-grupo">
-        <label>🕐 Hora de entrada <span style="color:#9e1b34;">*</span></label>
+        <label> Hora de entrada <span style="color:#9e1b34;">*</span></label>
         <input type="time" id="con-hora-entrada">
       </div>
       <div class="form-grupo">
-        <label>🕔 Hora de salida</label>
+        <label> Hora de salida</label>
         <input type="time" id="con-hora-salida">
       </div>
     </div>
     <div class="form-grupo">
-      <label>📝 Motivo de consulta <span style="color:#9e1b34;">*</span></label>
+      <label> Motivo de consulta <span style="color:#9e1b34;">*</span></label>
       <textarea id="con-motivo"></textarea>
     </div>
 
     <div style="display:flex; gap:10px; margin-top:20px;">
       <a href="consultas.html" class="btn btn-cancelar">✖ Cancelar</a>
-      <button class="btn btn-guardar" id="btn-guardar" onclick="guardarConsulta()" style="flex:1;">💾 Guardar Cambios</button>
+      <button class="btn btn-guardar" id="btn-guardar" onclick="guardarConsulta()" style="flex:1;"> Guardar Cambios</button>
     </div>
 
   </div>

@@ -8,14 +8,14 @@
 </head>
 <body>
 
-<!-- ===================== HEADER ===================== -->
+
 <header class="barra-superior">
-  <div class="barra-logo"><span>🏥</span><span>Consultorio UTHH</span></div>
+  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
   <nav class="menu-principal">
-    <a href="plantilla.html" class="activo">🏠 Inicio</a>
-    <a href="consultas.html">📋 Consultas</a>
-    <a href="listado.html">👥 Pacientes</a>
-    <a href="registrar_usuario.html">➕ Registrar</a>
+    <a href="plantilla.html" class="activo"> Inicio</a>
+    <a href="consultas.html"> Consultas</a>
+    <a href="listado.html"> Pacientes</a>
+    <a href="registrar_usuario.html"> Registrar</a>
     <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
   </nav>
   <a href="perfil.html" class="usuario-link">
@@ -26,15 +26,15 @@
 
 <main>
 
-  <!-- JS mostrará éxito o error aquí -->
+
   <div id="alerta" class="alerta" style="display:none;"></div>
 
   <div class="card" style="max-width:1000px; margin:0 auto;">
-    <h2 class="card-titulo">👤 Registro de Nuevo Paciente</h2>
+    <h2 class="card-titulo"> Registro de Nuevo Paciente</h2>
 
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
 
-      <!-- ===== DATOS PERSONALES ===== -->
+
       <section>
         <h3 style="color:#0f4c45; margin-bottom:16px;">📋 Datos Personales</h3>
 
@@ -58,7 +58,7 @@
           <label>Sexo <span style="color:#9e1b34;">*</span></label>
           <select id="sexo">
             <option value="">— Selecciona —</option>
-            <!-- JS llenará las opciones desde la API -->
+
           </select>
         </div>
         <div class="form-grupo">
@@ -75,15 +75,15 @@
         </div>
       </section>
 
-      <!-- ===== DATOS INSTITUCIONALES ===== -->
+
       <section>
-        <h3 style="color:#0f4c45; margin-bottom:16px;">🏫 Datos Institucionales</h3>
+        <h3 style="color:#0f4c45; margin-bottom:16px;"> Datos Institucionales</h3>
 
         <div class="form-grupo">
           <label>Tipo de Paciente <span style="color:#9e1b34;">*</span></label>
           <select id="tipo-paciente" onchange="mostrarCamposAlumno()">
             <option value="">— Selecciona —</option>
-            <!-- JS llenará los tipos desde la API -->
+
           </select>
         </div>
         <div class="form-grupo">
@@ -91,34 +91,34 @@
           <input type="text" id="matricula" placeholder="Ej: 20230001">
         </div>
 
-        <!-- Solo se muestra si el tipo de paciente es Alumno (JS lo controla) -->
+     
         <div id="bloque-alumno" style="display:none;">
           <div class="form-grupo">
             <label>Carrera</label>
             <select id="carrera">
               <option value="">— Selecciona —</option>
-              <!-- JS llenará desde la API -->
+
             </select>
           </div>
           <div class="form-grupo">
             <label>Cuatrimestre</label>
             <select id="cuatrimestre">
               <option value="">— Selecciona —</option>
-              <!-- JS llenará desde la API -->
+
             </select>
           </div>
           <div class="form-grupo">
             <label>Grupo</label>
             <select id="grupo">
               <option value="">— Selecciona —</option>
-              <!-- JS llenará desde la API -->
+
             </select>
           </div>
         </div>
 
         <div style="display:flex; gap:10px; margin-top:20px;">
           <a href="listado.html" class="btn btn-cancelar">✖ Cancelar</a>
-          <button class="btn btn-guardar" id="btn-registrar" onclick="registrarPaciente()">💾 Registrar Paciente</button>
+          <button class="btn btn-guardar" id="btn-registrar" onclick="registrarPaciente()"> Registrar Paciente</button>
         </div>
       </section>
 

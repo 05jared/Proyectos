@@ -20,15 +20,15 @@
 </head>
 <body>
 
-<!-- ===================== HEADER ===================== -->
+
 <header class="barra-superior">
-  <div class="barra-logo"><span>🏥</span><span>Consultorio UTHH</span></div>
+  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
   <nav class="menu-principal">
-    <a href="plantilla.html">🏠 Inicio</a>
-    <a href="consultas.html">📋 Consultas</a>
-    <a href="listado.html">👥 Pacientes</a>
-    <a href="registrar_usuarios.html">➕ Registrar</a>
-    <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
+    <a href="plantilla.html"> Inicio</a>
+    <a href="consultas.html"> Consultas</a>
+    <a href="listado.html"> Pacientes</a>
+    <a href="registrar_usuarios.html"> Registrar</a>
+    <a href="login.html" class="cerrar-sesion"> Cerrar sesión</a>
   </nav>
   <a href="perfil.html" class="usuario-link">
     👤 <span id="usuario-nombre"></span>
@@ -39,56 +39,55 @@
   <div class="card" style="width:100%; max-width:750px; padding:0; overflow:hidden;">
 
     <div style="background:#0f4c45; color:white; padding:20px 25px;">
-      <h2 style="margin:0;">📋 Registrar Nueva Consulta</h2>
+      <h2 style="margin:0;"> Registrar Nueva Consulta</h2>
       <p style="opacity:0.85; margin-top:4px; font-size:0.9em;">Los campos con * son obligatorios.</p>
     </div>
 
     <div style="padding:25px;">
 
-      <!-- JS mostrará alertas aquí -->
       <div id="alerta" class="alerta" style="display:none;"></div>
 
-      <!-- ===== DATOS DE LA CONSULTA ===== -->
+
       <div class="seccion">
-        <div class="seccion-titulo">🩺 Datos de la Consulta</div>
+        <div class="seccion-titulo"> Datos de la Consulta</div>
 
         <div class="form-row-1">
           <div class="form-grupo">
             <label>👤 Paciente <span style="color:#9e1b34;">*</span></label>
             <select id="id-paciente">
               <option value="">— Selecciona un paciente —</option>
-              <!-- JS llenará desde la API -->
+
             </select>
           </div>
         </div>
 
         <div class="form-row-2">
           <div class="form-grupo">
-            <label>📅 Fecha de consulta <span style="color:#9e1b34;">*</span></label>
+            <label> Fecha de consulta <span style="color:#9e1b34;">*</span></label>
             <input type="date" id="fecha-consulta">
           </div>
           <div class="form-grupo">
-            <label>🕐 Hora de entrada <span style="color:#9e1b34;">*</span></label>
+            <label> Hora de entrada <span style="color:#9e1b34;">*</span></label>
             <input type="time" id="hora-consulta">
           </div>
         </div>
 
         <div class="form-row-2">
           <div class="form-grupo">
-            <label>🕔 Hora de salida</label>
+            <label> Hora de salida</label>
             <input type="time" id="hora-salida">
           </div>
         </div>
 
         <div class="form-row-1">
           <div class="form-grupo">
-            <label>📝 Motivo de consulta <span style="color:#9e1b34;">*</span></label>
+            <label> Motivo de consulta <span style="color:#9e1b34;">*</span></label>
             <textarea id="motivo-consulta" placeholder="Describe el motivo de la consulta..."></textarea>
           </div>
         </div>
       </div>
 
-      <!-- ===== DIAGNÓSTICO (opcional) ===== -->
+
       <div class="toggle-btn" onclick="toggleSeccion('diagnostico', this)">
         <span id="icon-diagnostico">➕</span> Agregar Diagnóstico (opcional)
       </div>
@@ -108,44 +107,44 @@
         </div>
       </div>
 
-      <!-- ===== TRATAMIENTO (opcional) ===== -->
+    
       <div class="toggle-btn verde" onclick="toggleSeccion('tratamiento', this)">
         <span id="icon-tratamiento">➕</span> Agregar Tratamiento (opcional)
       </div>
       <div class="seccion" id="tratamiento" style="display:none; border-color:#c8e6c9;">
-        <div class="seccion-titulo" style="color:#2e7d32; border-bottom-color:#c8e6c9;">💊 Tratamiento</div>
+        <div class="seccion-titulo" style="color:#2e7d32; border-bottom-color:#c8e6c9;"> Tratamiento</div>
         <div class="form-row-2">
           <div class="form-grupo">
-            <label>💊 Medicamento</label>
+            <label> Medicamento</label>
             <input type="text" id="medicamento" placeholder="Ej: Amoxicilina 500mg">
           </div>
           <div class="form-grupo">
-            <label>📏 Dosis</label>
+            <label> Dosis</label>
             <input type="text" id="dosis" placeholder="Ej: 1 cápsula">
           </div>
         </div>
         <div class="form-row-2">
           <div class="form-grupo">
-            <label>🔁 Frecuencia</label>
+            <label> Frecuencia</label>
             <input type="text" id="frecuencia" placeholder="Ej: Cada 8 horas">
           </div>
           <div class="form-grupo">
-            <label>📆 Duración</label>
+            <label> Duración</label>
             <input type="text" id="duracion" placeholder="Ej: 7 días">
           </div>
         </div>
         <div class="form-row-1">
           <div class="form-grupo">
-            <label>📌 Indicaciones especiales</label>
+            <label> Indicaciones especiales</label>
             <textarea id="indicaciones" placeholder="Ej: Tomar con alimentos..."></textarea>
           </div>
         </div>
       </div>
 
-      <!-- ===== BOTONES ===== -->
+
       <div style="display:flex; gap:12px; justify-content:flex-end; margin-top:10px;">
         <a href="consultas.html" class="btn btn-limpiar">✖ Cancelar</a>
-        <button class="btn btn-guardar" id="btn-guardar" onclick="guardarConsulta()">💾 Guardar Consulta</button>
+        <button class="btn btn-guardar" id="btn-guardar" onclick="guardarConsulta()"> Guardar Consulta</button>
       </div>
 
     </div>

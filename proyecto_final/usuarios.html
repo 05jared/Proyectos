@@ -8,14 +8,14 @@
 </head>
 <body>
 
-<!-- ===================== HEADER ===================== -->
+
 <header class="barra-superior">
-  <div class="barra-logo"><span>🏥</span><span>Consultorio UTHH</span></div>
+  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
   <nav class="menu-principal">
-    <a href="index.html">🏠 Inicio</a>
-    <a href="consultas.html">📋 Consultas</a>
-    <a href="listado.html">👥 Pacientes</a>
-    <a href="registrar-usuario.html">➕ Registrar</a>
+    <a href="index.html"> Inicio</a>
+    <a href="consultas.html"> Consultas</a>
+    <a href="listado.html"> Pacientes</a>
+    <a href="registrar-usuario.html"> Registrar</a>
     <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
   </nav>
   <a href="perfil.html" class="usuario-link">
@@ -26,16 +26,16 @@
 <main>
 
   <div class="toolbar">
-    <h2 class="titulo-pagina">👥 Usuarios del Sistema</h2>
+    <h2 class="titulo-pagina"> Usuarios del Sistema</h2>
     <a href="registrar-usuario.html" class="btn btn-nuevo">➕ Nuevo Usuario</a>
   </div>
 
-  <!-- JS llenará el total -->
+
   <p class="resumen">Total de usuarios: <strong id="total-usuarios"></strong></p>
 
   <div class="tabla-container">
     <div class="tabla-titulo">
-      <span>👥 Listado de Usuarios</span>
+      <span> Listado de Usuarios</span>
     </div>
     <table>
       <thead>
@@ -47,14 +47,14 @@
           <th>Acciones</th>
         </tr>
       </thead>
-      <!-- JS insertará aquí las filas con datos de la API -->
+     
       <tbody id="tabla-body"></tbody>
     </table>
   </div>
 
-  <!-- Estado vacío (JS lo muestra si no hay usuarios) -->
+
   <div id="sin-usuarios" class="estado-vacio" style="display:none;">
-    <p class="icono">👤</p>
+    <p class="icono"></p>
     <p>No hay usuarios registrados.</p>
   </div>
 
