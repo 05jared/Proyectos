@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultas - UTHH</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="barra-superior">
+  <div class="barra-logo"><span>🏥</span><span>Consultorio UTHH</span></div>
+  <nav class="menu-principal">
+    <a href="plantilla.html" class="activo">🏠 Inicio</a>
+    <a href="consultas.html">📋 Consultas</a>
+    <a href="listado.html">👥 Pacientes</a>
+    <a href="registrar_usuario.html">➕ Registrar</a>
+    <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
+  </nav>
+  <a href="perfil.html" class="usuario-link">
+    👤 <span id="usuario-nombre"></span>
+  </a>
+</header>
+
+
+<main>
+
+  <div id="alerta" class="alerta" style="display:none;"></div>
+
+  <div class="toolbar">
+    <div class="search-form">
+      <input type="text" id="input-busqueda" placeholder="🔍 Buscar por paciente o matrícula...">
+      <button class="btn btn-buscar" id="btn-buscar">Buscar</button>
+      <button class="btn btn-limpiar" id="btn-limpiar" style="display:none;">✖ Limpiar</button>
+    </div>
+    <a href="nueva_consulta.html" class="btn btn-nuevo">➕ Nueva Consulta</a>
+  </div>
+
+  <p class="resumen">Total de consultas: <strong id="total-consultas"></strong></p>
+
+  <div class="tabla-container">
+    <div class="tabla-titulo">📋 Historial de Consultas</div>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Paciente</th>
+          <th>Fecha</th>
+          <th>Hora Entrada</th>
+          <th>Hora Salida</th>
+          <th>Motivo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <!-- JS llenará con fetch('/api/consultas') -->
+      <tbody id="tabla-body"></tbody>
+    </table>
+  </div>
+
+  <div id="sin-consultas" class="estado-vacio" style="display:none;">
+    <p class="icono">📋</p>
+    <p>No hay consultas registradas aún.</p>
+    <a href="nueva_consulta.html" class="btn btn-nuevo" style="margin-top:20px;">➕ Registrar primera consulta</a>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025, Todos los derechos reservados</p>
+  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo, México | Tel: 789 896 2088 al 91</p>
+</footer>
+
+<script src="js/consultas.js"></script>
+</body>
+</html>

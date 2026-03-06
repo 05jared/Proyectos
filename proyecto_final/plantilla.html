@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Consultorio UTHH</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="barra-superior">
+  <div class="barra-logo"><span>🏥</span><span>Consultorio UTHH</span></div>
+  <nav class="menu-principal">
+    <a href="plantilla.html" class="activo">🏠 Inicio</a>
+    <a href="consultas.html">📋 Consultas</a>
+    <a href="listado.html">👥 Pacientes</a>
+    <a href="registrar_usuario.html">➕ Registrar</a>
+    <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
+  </nav>
+  <a href="perfil.html" class="usuario-link">
+    👤 <span id="usuario-nombre"></span>
+  </a>
+</header>
+
+<main style="padding:40px 20px; text-align:center;">
+  <!-- JS llenará el nombre del usuario -->
+  <h2 style="color:#0f4c45;">Bienvenido al Sistema, <span id="bienvenida-nombre"></span></h2>
+  <p style="margin-top:10px; color:#555;">Selecciona una opción del menú para comenzar a trabajar.</p>
+</main>
+
+<footer>
+  <p>© 2025, Todos los derechos reservados</p>
+  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo, México | Tel: 789 896 2088 al 91</p>
+</footer>
+
+<script src="js/plantilla.js"></script>
+</body>
+</html>

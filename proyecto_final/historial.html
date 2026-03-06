@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historial de Consultas - UTHH</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="barra-superior">
+  <div class="barra-logo"><span>🏥</span><span>Consultorio UTHH</span></div>
+  <nav class="menu-principal">
+    <a href="historial.html" class="activo">📋 Historial</a>
+    <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
+  </nav>
+  <!-- JS llenará el nombre del paciente -->
+  <a href="editar_personal.html" class="usuario-link">👤 <span id="paciente-nombre"></span></a>
+</header>
+
+<main>
+
+  <h2 class="titulo-pagina">📋 Historial de Consultas</h2>
+  <!-- JS llenará el nombre aquí -->
+  <p class="resumen">Paciente: <strong id="paciente-nombre-resumen"></strong></p>
+
+  <div class="tabla-container">
+    <div class="tabla-titulo">Mis Consultas</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Motivo</th>
+          <th>Salida</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <!-- JS llenará con fetch('/api/historial/:id') -->
+      <tbody id="tabla-body"></tbody>
+    </table>
+  </div>
+
+  <div id="sin-consultas" class="estado-vacio" style="display:none;">
+    <p class="icono">📋</p>
+    <p>No tienes consultas registradas.</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025, Todos los derechos reservados</p>
+  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo, México | Tel: 789 896 2088 al 91</p>
+</footer>
+
+<script src="js/historial.js"></script>
+</body>
+</html>

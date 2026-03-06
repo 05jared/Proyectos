@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Consultas - UTHH</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="barra-superior">
+  <div class="barra-logo"><span>🏥</span><span>Consultorio UTHH</span></div>
+  <nav class="menu-principal">
+    <a href="paginatrabajo.html">🏠 Inicio</a>
+    <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
+  </nav>
+</header>
+
+<main>
+  <h2 class="titulo-pagina">📋 Mis Consultas</h2>
+
+  <div class="tabla-container">
+    <div class="tabla-titulo">Historial</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Paciente</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Motivo</th>
+          <th>Observación</th>
+          <th>Salida</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <!-- JS llenará con fetch('/api/consultas/alumno/:id') -->
+      <tbody id="tabla-body"></tbody>
+    </table>
+  </div>
+
+  <div id="sin-consultas" class="estado-vacio" style="display:none;">
+    <p class="icono">📋</p>
+    <p>No hay registros en la tabla de consultas.</p>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025, Todos los derechos reservados</p>
+  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo, México | Tel: 789 896 2088 al 91</p>
+</footer>
+
+<script src="js/Hola.js"></script>
+</body>
+</html>
