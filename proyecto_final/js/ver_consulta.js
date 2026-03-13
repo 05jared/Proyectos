@@ -1,1 +1,0 @@
-// ver_consulta.js

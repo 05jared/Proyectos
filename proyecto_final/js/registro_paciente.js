@@ -1,1 +1,0 @@
-// registro_paciente.js
