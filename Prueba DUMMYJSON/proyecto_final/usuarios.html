@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios — Consultorio UTHH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/sistema.css">
+</head>
+<body>
+
+  <header class="sys-navbar">
+    <div class="sys-navbar-inner">
+      <a href="logeoadmin.html" class="sys-navbar-logo">
+        <img src="imagenes/logo.jpg" alt="Logo">
+        <span class="sys-navbar-nombre">Consultorio UTHH</span>
+      </a>
+      <nav class="sys-nav-links">
+        <a href="logeoadmin.html">Inicio</a>
+        <a href="consultas.html">Consultas</a>
+        <a href="pacientes.html">Pacientes</a>
+        <a href="usuarios.html" class="activo">Usuarios</a>
+      </nav>
+      <div class="sys-navbar-derecha">
+        <div class="sys-usuario-info">
+          <div class="sys-usuario-avatar">👤</div>
+          <span id="nombre-usuario">Cargando...</span>
+        </div>
+        <a href="login.html" class="sys-btn-salir" onclick="cerrarSesion()">Cerrar sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="sys-main">
+
+    <div class="sys-page-header">
+      <div>
+        <h1 class="sys-page-titulo">Usuarios Registrados</h1>
+        <p class="sys-page-sub">Gestión de usuarios con acceso al sistema.</p>
+      </div>
+      <a href="registrar_usuario.html" class="btn-sys-primario btn-sys-verde">+ Registrar Nuevo Usuario</a>
+    </div>
+
+    <div class="sys-tabla-wrap">
+      <table class="sys-tabla">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th class="centro">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-usuarios">
+          <tr>
+            <td colspan="4" class="sys-cargando">Cargando usuarios...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
+
+  <script src="js/usuarios.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Paciente - UTHH</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="barra-superior">
+  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
+  <nav class="menu-principal">
+    <a href="plantilla.html"> Inicio</a>
+    <a href="consultas.html"> Consultas</a>
+    <a href="Listado.html"> Pacientes</a>
+    <a href="registrar_usuarios.html"> Registrar</a>
+    <a href="login.html" class="cerrar-sesion"> Cerrar sesión</a>
+  </nav>
+  <a href="perfil.html" class="usuario-link">👤 <span id="usuario-nombre"></span></a>
+</header>
+
+<main style="max-width:860px; margin:0 auto; padding:30px 20px;">
+
+  <h2 style="text-align:center; color:#0f4c45; margin-bottom:20px;"> Editar Paciente</h2>
+
+  <div id="alerta" class="alerta" style="display:none;"></div>
+
+  <div class="card">
+    <div class="card-titulo" id="paciente-nombre-completo"></div>
+
+    <div class="form-grid-2">
+      <div class="form-grupo">
+        <label>ID</label>
+        <input type="text" id="pac-id" readonly>
+      </div>
+      <div class="form-grupo">
+        <label>Tipo de Paciente</label>
+        <input type="text" id="pac-tipo">
+      </div>
+      <div class="form-grupo">
+        <label>Nombre <span style="color:#9e1b34;">*</span></label>
+        <input type="text" id="pac-nombre">
+      </div>
+      <div class="form-grupo">
+        <label>Apellido Paterno <span style="color:#9e1b34;">*</span></label>
+        <input type="text" id="pac-apellido-paterno">
+      </div>
+      <div class="form-grupo">
+        <label>Apellido Materno <span style="color:#9e1b34;">*</span></label>
+        <input type="text" id="pac-apellido-materno">
+      </div>
+      <div class="form-grupo">
+        <label>Matrícula / N° Trabajador</label>
+        <input type="text" id="pac-matricula">
+      </div>
+      <div class="form-grupo">
+        <label>Fecha de Nacimiento</label>
+        <input type="date" id="pac-fecha">
+      </div>
+      <div class="form-grupo">
+        <label>Sexo</label>
+        <input type="text" id="pac-sexo">
+      </div>
+      <div class="form-grupo">
+        <label>Correo</label>
+        <input type="email" id="pac-correo">
+      </div>
+      <div class="form-grupo">
+        <label>Teléfono</label>
+        <input type="text" id="pac-telefono">
+      </div>
+      <div class="form-grupo">
+        <label>Dirección</label>
+        <input type="text" id="pac-direccion">
+      </div>
+      <div class="form-grupo">
+        <label>Grupo</label>
+        <input type="text" id="pac-grupo">
+      </div>
+      <div class="form-grupo">
+        <label>Cuatrimestre</label>
+        <input type="text" id="pac-cuatrimestre">
+      </div>
+      <div class="form-grupo">
+        <label>Carrera</label>
+        <input type="text" id="pac-carrera">
+      </div>
+    </div>
+
+    <div style="display:flex; gap:10px; margin-top:20px;">
+      <a href="Listado.html" class="btn btn-cancelar">✖ Cancelar</a>
+      <button class="btn btn-guardar" id="btn-guardar" onclick="guardarPaciente()" style="flex:1;"> Guardar Cambios</button>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025, Todos los derechos reservados</p>
+  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo, México | Tel: 789 896 2088 al 91</p>
+</footer>
+
+<script src="js/edit.js"></script>
+</body>
+</html>

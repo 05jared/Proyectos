@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nueva Consulta - UTHH</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styleconsn.css">
+</head>
+<body>
+
+
+<header class="barra-superior">
+  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
+  <nav class="menu-principal">
+    <a href="plantilla.html"> Inicio</a>
+    <a href="consultas.html"> Consultas</a>
+    <a href="listado.html"> Pacientes</a>
+    <a href="registrar_usuarios.html"> Registrar</a>
+    <a href="login.html" class="cerrar-sesion"> Cerrar sesión</a>
+  </nav>
+  <a href="perfil.html" class="usuario-link">
+    👤 <span id="usuario-nombre"></span>
+  </a>
+</header>
+
+<main style="padding:30px 20px; display:flex; justify-content:center;">
+  <div class="card" style="width:100%; max-width:750px; padding:0; overflow:hidden;">
+
+    <div style="background:#0f4c45; color:white; padding:20px 25px;">
+      <h2 style="margin:0;"> Registrar Nueva Consulta</h2>
+      <p style="opacity:0.85; margin-top:4px; font-size:0.9em;">Los campos con * son obligatorios.</p>
+    </div>
+
+    <div style="padding:25px;">
+
+      <div id="alerta" class="alerta" style="display:none;"></div>
+
+
+      <div class="seccion">
+        <div class="seccion-titulo"> Datos de la Consulta</div>
+
+        <div class="form-row-1">
+          <div class="form-grupo">
+            <label>👤 Paciente <span style="color:#9e1b34;">*</span></label>
+            <select id="id-paciente">
+              <option value="">— Selecciona un paciente —</option>
+
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-grupo">
+            <label> Fecha de consulta <span style="color:#9e1b34;">*</span></label>
+            <input type="date" id="fecha-consulta">
+          </div>
+          <div class="form-grupo">
+            <label> Hora de entrada <span style="color:#9e1b34;">*</span></label>
+            <input type="time" id="hora-consulta">
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-grupo">
+            <label> Hora de salida</label>
+            <input type="time" id="hora-salida">
+          </div>
+        </div>
+
+        <div class="form-row-1">
+          <div class="form-grupo">
+            <label> Motivo de consulta <span style="color:#9e1b34;">*</span></label>
+            <textarea id="motivo-consulta" placeholder="Describe el motivo de la consulta..."></textarea>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="toggle-btn" onclick="toggleSeccion('diagnostico', this)">
+        <span id="icon-diagnostico">➕</span> Agregar Diagnóstico (opcional)
+      </div>
+      <div class="seccion seccion-opcional" id="diagnostico" style="display:none;">
+        <div class="seccion-titulo">🔬 Diagnóstico</div>
+        <div class="form-row-1">
+          <div class="form-grupo">
+            <label>Diagnóstico</label>
+            <input type="text" id="diagnostico-texto" placeholder="Ej: Faringitis aguda, Gastritis...">
+          </div>
+        </div>
+        <div class="form-row-1">
+          <div class="form-grupo">
+            <label>Observaciones</label>
+            <textarea id="observaciones" placeholder="Observaciones adicionales..."></textarea>
+          </div>
+        </div>
+      </div>
+
+    
+      <div class="toggle-btn verde" onclick="toggleSeccion('tratamiento', this)">
+        <span id="icon-tratamiento">➕</span> Agregar Tratamiento (opcional)
+      </div>
+      <div class="seccion" id="tratamiento" style="display:none; border-color:#c8e6c9;">
+        <div class="seccion-titulo" style="color:#2e7d32; border-bottom-color:#c8e6c9;"> Tratamiento</div>
+        <div class="form-row-2">
+          <div class="form-grupo">
+            <label> Medicamento</label>
+            <input type="text" id="medicamento" placeholder="Ej: Amoxicilina 500mg">
+          </div>
+          <div class="form-grupo">
+            <label> Dosis</label>
+            <input type="text" id="dosis" placeholder="Ej: 1 cápsula">
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-grupo">
+            <label> Frecuencia</label>
+            <input type="text" id="frecuencia" placeholder="Ej: Cada 8 horas">
+          </div>
+          <div class="form-grupo">
+            <label> Duración</label>
+            <input type="text" id="duracion" placeholder="Ej: 7 días">
+          </div>
+        </div>
+        <div class="form-row-1">
+          <div class="form-grupo">
+            <label> Indicaciones especiales</label>
+            <textarea id="indicaciones" placeholder="Ej: Tomar con alimentos..."></textarea>
+          </div>
+        </div>
+      </div>
+
+
+      <div style="display:flex; gap:12px; justify-content:flex-end; margin-top:10px;">
+        <a href="consultas.html" class="btn btn-limpiar">✖ Cancelar</a>
+        <button class="btn btn-guardar" id="btn-guardar" onclick="guardarConsulta()"> Guardar Consulta</button>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025, Todos los derechos reservados</p>
+  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo | Tel: 789 896 2088 al 91</p>
+</footer>
+
+<script>
+function toggleSeccion(id, btn) {
+  const div = document.getElementById(id);
+  const icon = document.getElementById('icon-' + id);
+  const visible = div.style.display !== 'none';
+  div.style.display = visible ? 'none' : 'block';
+  icon.textContent = visible ? '➕' : '➖';
+}
+</script>
+<script src="js/nueva_consulta.js"></script>
+</body>
+</html>

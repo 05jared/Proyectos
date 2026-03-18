@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Mis Datos - UTHH</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="barra-superior">
+  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
+  <nav class="menu-principal">
+    <a href="historial.html"> Historial</a>
+    <a href="login.html" class="cerrar-sesion"> Cerrar sesión</a>
+  </nav>
+
+  <a href="#" class="usuario-link">👤 <span id="paciente-nombre"></span></a>
+</header>
+
+<main style="display:flex; justify-content:center; align-items:center; min-height:80vh; padding:20px;">
+  <div class="card" style="width:100%; max-width:500px;">
+
+    <div id="alerta" class="alerta" style="display:none;"></div>
+
+    <h2 class="card-titulo"> Editar Mis Datos</h2>
+
+    <div class="form-grupo">
+      <label>Nombre</label>
+      <input type="text" id="nombre">
+    </div>
+    <div class="form-grupo">
+      <label>Apellido Paterno</label>
+      <input type="text" id="apellido-paterno">
+    </div>
+    <div class="form-grupo">
+      <label>Apellido Materno</label>
+      <input type="text" id="apellido-materno">
+    </div>
+    <div class="form-grupo">
+      <label>Fecha de Nacimiento</label>
+      <input type="date" id="fecha-nacimiento">
+    </div>
+    <div class="form-grupo">
+      <label>Correo Electrónico</label>
+      <input type="email" id="correo">
+    </div>
+    <div class="form-grupo">
+      <label>Teléfono</label>
+      <input type="text" id="telefono">
+    </div>
+
+    <div style="display:flex; gap:10px; margin-top:16px;">
+      <a href="historial.html" class="btn btn-cancelar" style="flex:1; text-align:center;">Volver</a>
+      <button class="btn btn-guardar" id="btn-guardar" onclick="guardarDatos()" style="flex:1;">Guardar Cambios</button>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>© 2025, Todos los derechos reservados</p>
+  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo, México | Tel: 789 896 2088 al 91</p>
+</footer>
+
+<script src="js/editar_personal.js"></script>
+</body>
+</html>

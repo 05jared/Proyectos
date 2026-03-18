@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ver Paciente - UTHH</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+<header class="barra-superior">
+  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
+  <nav class="menu-principal">
+    <a href="index.html"> Inicio</a>
+    <a href="consultas.html"> Consultas</a>
+    <a href="listado.html"> Pacientes</a>
+    <a href="registro.html"> Registrar</a>
+    <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
+  </nav>
+  <a href="perfil.html" class="usuario-link">
+    👤 <span id="usuario-nombre"></span>
+  </a>
+</header>
+
+<main style="max-width:860px; margin:0 auto; padding:30px 20px;">
+
+  <h2 style="text-align:center; color:#0f4c45; margin-bottom:24px;">Datos del Paciente</h2>
+
+  <div class="card">
+    <div class="card-titulo" id="paciente-nombre-completo"></div>
+
+    <div class="detalle-grid">
+      <div class="detalle-item">
+        <label>ID</label>
+        <span id="pac-id"></span>
+      </div>
+      <div class="detalle-item">
+        <label>Tipo de Paciente</label>
+        <span id="pac-tipo"></span>
+      </div>
+      <div class="detalle-item">
+        <label>Matrícula / N° Trabajador</label>
+        <span id="pac-matricula"></span>
+      </div>
+      <div class="detalle-item">
+        <label>Fecha de Nacimiento</label>
+        <span id="pac-fecha"></span>
+      </div>
+      <div class="detalle-item">
+        <label>Sexo</label>
+        <span id="pac-sexo"></span>
+      </div>
+      <div class="detalle-item">
+        <label>Correo</label>
+        <span id="pac-correo"></span>
+      </div>
+      <div class="detalle-item">
+        <label>Teléfono</label>
+        <span id="pac-telefono"></span>
+      </div>
+      <div class="detalle-item">
+        <label>Dirección</label>
+        <span id="pac-direccion"></span>
+      </div>
+      <div class="detalle-item">
+        <label>Grupo</label>
+        <span id="pac-grupo"></span>
+      </div>
+      <div class="detalle-item">
+        <label>Cuatrimestre</label>
+        <span id="pac-cuatrimestre"></span>
+      </div>
+      <div class="detalle-item">
+        <label>Carrera</label>
+        <span id="pac-carrera"></span>
+      </div>
+      <div class="detalle-item">
+        <label>Edad</label>
+
+        <span id="pac-edad"></span>
+      </div>
+      <div class="detalle-item">
+        <label>Total de Consultas</label>
+
+        <span id="pac-consultas"></span>
+      </div>
+    </div>
+
+    <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+      <a href="listado.html" class="btn btn-volver">← Regresar a la lista</a>
+      <a id="btn-editar" href="#" class="btn btn-editar"> Editar paciente</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025, Todos los derechos reservados</p>
+  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo, México | Tel: 789 896 2088 al 91</p>
+</footer>
+
+<script src="js/ver-paciente.js"></script>
+</body>
+</html>

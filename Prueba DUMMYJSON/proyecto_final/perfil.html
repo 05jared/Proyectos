@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil — Consultorio UTHH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/sistema.css">
+</head>
+<body>
+
+  <header class="sys-navbar">
+    <div class="sys-navbar-inner">
+      <a href="logeoadmin.html" class="sys-navbar-logo">
+        <img src="imagenes/logo.jpg" alt="Logo">
+        <span class="sys-navbar-nombre">Consultorio UTHH</span>
+      </a>
+      <nav class="sys-nav-links">
+        <a href="logeoadmin.html">Inicio</a>
+        <a href="consultas.html">Consultas</a>
+        <a href="pacientes.html">Pacientes</a>
+        <a href="usuarios.html">Usuarios</a>
+      </nav>
+      <div class="sys-navbar-derecha">
+        <div class="sys-usuario-info" style="background:rgba(255,255,255,.12)">
+          <div class="sys-usuario-avatar">👤</div>
+          <span id="nombre-usuario">Cargando...</span>
+        </div>
+        <a href="login.html" class="sys-btn-salir" onclick="cerrarSesion()">Cerrar sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="sys-main" style="display:flex;justify-content:center;align-items:flex-start;padding-top:48px">
+    <div class="sys-card" style="max-width:500px;width:100%">
+      <h2 class="sys-card-titulo" style="text-align:center">✏️ Editar Mis Datos</h2>
+
+      <div class="modal-campo">
+        <label class="modal-label">Nombre</label>
+        <input type="text" class="modal-input" id="input-nombre" placeholder="Tu nombre completo">
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Correo Electrónico</label>
+        <input type="email" class="modal-input" id="input-correo" placeholder="correo@uthh.edu.mx">
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Nueva Contraseña</label>
+        <input type="password" class="modal-input" id="input-password" placeholder="••••••••">
+        <small style="font-size:11px;color:var(--texto-suave);margin-top:4px;display:block">Deja vacío para no cambiar tu contraseña</small>
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Rol</label>
+        <select class="modal-select" id="input-rol" disabled>
+          <option>Administrador</option>
+          <option>Doctora</option>
+          <option>Recepcionista</option>
+        </select>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:24px">
+        <a href="logeoadmin.html" class="btn-modal-cancelar" style="flex:1;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">Volver</a>
+        <button class="btn-modal-guardar" style="flex:1" onclick="guardarCambios()">Guardar Cambios</button>
+      </div>
+
+      <p id="msg-perfil" style="text-align:center;margin-top:16px;font-size:13px;color:var(--verde);display:none">✅ Cambios guardados correctamente.</p>
+    </div>
+  </main>
+
+  <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
+
+  <script src="js/perfil.js"></script>
+</body>
+</html>

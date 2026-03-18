@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacientes — Consultorio UTHH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/sistema.css">
+</head>
+<body>
+
+  <header class="sys-navbar">
+    <div class="sys-navbar-inner">
+      <a href="logeoadmin.html" class="sys-navbar-logo">
+        <img src="imagenes/logo.jpg" alt="Logo">
+        <span class="sys-navbar-nombre">Consultorio UTHH</span>
+      </a>
+      <nav class="sys-nav-links">
+        <a href="logeoadmin.html">Inicio</a>
+        <a href="consultas.html">Consultas</a>
+        <a href="pacientes.html" class="activo">Pacientes</a>
+        <a href="usuarios.html">Usuarios</a>
+      </nav>
+      <div class="sys-navbar-derecha">
+        <div class="sys-usuario-info">
+          <div class="sys-usuario-avatar">👤</div>
+          <span id="nombre-usuario">Cargando...</span>
+        </div>
+        <a href="login.html" class="sys-btn-salir" onclick="cerrarSesion()">Cerrar sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="sys-main">
+
+    <div class="sys-page-header">
+      <div>
+        <h1 class="sys-page-titulo">Pacientes Registrados</h1>
+        <p class="sys-page-sub">Gestión del padrón de pacientes del Servicio Médico.</p>
+      </div>
+      <a href="registro_paciente.html" class="btn-sys-primario btn-sys-verde">+ Registrar Nuevo Paciente</a>
+    </div>
+
+    <div class="sys-buscador">
+      <input type="text" id="buscador" class="sys-buscador-input" placeholder="Buscar por matrícula o nombre..." oninput="buscar(this.value)">
+    </div>
+
+    <div class="sys-tabla-wrap">
+      <table class="sys-tabla">
+        <thead>
+          <tr>
+            <th>Nombre Completo</th>
+            <th>Matrícula</th>
+            <th>Tipo</th>
+            <th>Carrera</th>
+            <th>Grupo</th>
+            <th class="centro">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-pacientes">
+          <tr>
+            <td colspan="6" class="sys-cargando">Cargando pacientes...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
+
+  <script src="js/pacientes.js"></script>
+</body>
+</html>

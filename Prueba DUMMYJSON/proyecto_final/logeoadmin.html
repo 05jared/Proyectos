@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Consultorio UTHH</title>
+  <link rel="stylesheet" href="styles/sistema.css">
+</head>
+<body>
+
+  <header class="sys-navbar">
+    <div class="sys-navbar-inner">
+      <a href="logeoadmin.html" class="sys-navbar-logo">
+        <img src="imagenes/logo.jpg" alt="Logo">
+        <span class="sys-navbar-nombre">Consultorio UTHH</span>
+      </a>
+      <nav class="sys-nav-links">
+        <a href="logeoadmin.html" class="activo">Inicio</a>
+        <a href="consultas.html">Consultas</a>
+        <a href="pacientes.html">Pacientes</a>
+        <a href="usuarios.html">Usuarios</a>
+      </nav>
+          <a href="perfil.html" class="sys-usuario-info" style="text-decoration:none; cursor:pointer;">
+      <div class="sys-usuario-avatar"></div>
+      <span id="nombre-usuario">Cargando...</span>
+    </a>
+        <a href="login.html" class="sys-btn-salir" onclick="cerrarSesion()">Cerrar sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="sys-main">
+
+    <div class="sys-page-header">
+      <div>
+        <h1 class="sys-page-titulo" id="titulo-bienvenida">Bienvenido al Sistema</h1>
+        <p class="sys-page-sub">Selecciona una opción del menú para comenzar.</p>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-card-icono stat-icono-azul"></div>
+        <div>
+          <div class="stat-num" id="total-pacientes"></div>
+          <div class="stat-label">Pacientes registrados</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icono stat-icono-verde"></div>
+        <div>
+          <div class="stat-num" id="total-consultas">—</div>
+          <div class="stat-label">Consultas registradas</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icono stat-icono-ambar"></div>
+        <div>
+          <div class="stat-num" id="total-usuarios">—</div>
+          <div class="stat-label">Usuarios del sistema</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icono stat-icono-rojo"></div>
+        <div>
+          <div class="stat-num" id="rol-usuario" style="font-size:18px;line-height:1.4">—</div>
+          <div class="stat-label">Tu rol en el sistema</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <h2 class="sys-card-titulo">Accesos rápidos</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px;">
+        <a href="consultas.html" class="btn-sys-primario" style="justify-content:center; padding:16px;"> Ver Consultas</a>
+        <a href="pacientes.html" class="btn-sys-primario btn-sys-verde" style="justify-content:center; padding:16px;">Ver Pacientes</a>
+        <a href="usuarios.html" class="btn-sys-primario" style="justify-content:center; padding:16px; background:#a16207;"> Ver Usuarios</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
+
+  <script src="js/logeoadmin.js"></script>
+</body>
+</html>

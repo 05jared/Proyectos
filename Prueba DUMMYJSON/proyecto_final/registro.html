@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Paciente - UTHH</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+<header class="barra-superior">
+  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
+  <nav class="menu-principal">
+    <a href="plantilla.html" class="activo"> Inicio</a>
+    <a href="consultas.html"> Consultas</a>
+    <a href="listado.html"> Pacientes</a>
+    <a href="registrar_usuario.html"> Registrar</a>
+    <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
+  </nav>
+  <a href="perfil.html" class="usuario-link">
+    👤 <span id="usuario-nombre"></span>
+  </a>
+</header>
+
+
+<main>
+
+
+  <div id="alerta" class="alerta" style="display:none;"></div>
+
+  <div class="card" style="max-width:1000px; margin:0 auto;">
+    <h2 class="card-titulo"> Registro de Nuevo Paciente</h2>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
+
+
+      <section>
+        <h3 style="color:#0f4c45; margin-bottom:16px;">📋 Datos Personales</h3>
+
+        <div class="form-grupo">
+          <label>Nombre <span style="color:#9e1b34;">*</span></label>
+          <input type="text" id="nombre" placeholder="Nombre(s)">
+        </div>
+        <div class="form-grupo">
+          <label>Apellido Paterno <span style="color:#9e1b34;">*</span></label>
+          <input type="text" id="apellido-paterno">
+        </div>
+        <div class="form-grupo">
+          <label>Apellido Materno <span style="color:#9e1b34;">*</span></label>
+          <input type="text" id="apellido-materno">
+        </div>
+        <div class="form-grupo">
+          <label>Fecha de Nacimiento <span style="color:#9e1b34;">*</span></label>
+          <input type="date" id="fecha-nacimiento">
+        </div>
+        <div class="form-grupo">
+          <label>Sexo <span style="color:#9e1b34;">*</span></label>
+          <select id="sexo">
+            <option value="">— Selecciona —</option>
+
+          </select>
+        </div>
+        <div class="form-grupo">
+          <label>Correo Electrónico <span style="color:#9e1b34;">*</span></label>
+          <input type="email" id="correo" placeholder="correo@ejemplo.com">
+        </div>
+        <div class="form-grupo">
+          <label>Teléfono <span style="color:#9e1b34;">*</span></label>
+          <input type="text" id="telefono" placeholder="10 dígitos">
+        </div>
+        <div class="form-grupo">
+          <label>Dirección <span style="color:#9e1b34;">*</span></label>
+          <input type="text" id="direccion" placeholder="Calle, colonia, municipio">
+        </div>
+      </section>
+
+
+      <section>
+        <h3 style="color:#0f4c45; margin-bottom:16px;"> Datos Institucionales</h3>
+
+        <div class="form-grupo">
+          <label>Tipo de Paciente <span style="color:#9e1b34;">*</span></label>
+          <select id="tipo-paciente" onchange="mostrarCamposAlumno()">
+            <option value="">— Selecciona —</option>
+
+          </select>
+        </div>
+        <div class="form-grupo">
+          <label>Matrícula / N° Trabajador <span style="color:#9e1b34;">*</span></label>
+          <input type="text" id="matricula" placeholder="Ej: 20230001">
+        </div>
+
+     
+        <div id="bloque-alumno" style="display:none;">
+          <div class="form-grupo">
+            <label>Carrera</label>
+            <select id="carrera">
+              <option value="">— Selecciona —</option>
+
+            </select>
+          </div>
+          <div class="form-grupo">
+            <label>Cuatrimestre</label>
+            <select id="cuatrimestre">
+              <option value="">— Selecciona —</option>
+
+            </select>
+          </div>
+          <div class="form-grupo">
+            <label>Grupo</label>
+            <select id="grupo">
+              <option value="">— Selecciona —</option>
+
+            </select>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; margin-top:20px;">
+          <a href="listado.html" class="btn btn-cancelar">✖ Cancelar</a>
+          <button class="btn btn-guardar" id="btn-registrar" onclick="registrarPaciente()"> Registrar Paciente</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025, Todos los derechos reservados</p>
+  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo | Tel: 789 896 2088 al 91</p>
+</footer>
+
+<script src="js/registro.js"></script>
+</body>
+</html>

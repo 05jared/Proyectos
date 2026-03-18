@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicio Médico — UTHH</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo">
+      <img src="https://res.cloudinary.com/dffswlrkh/image/upload/v1773809668/pxn7noa5cgnykhsrh8fr.jpg" alt="Logo Consultorio UTHH" class="nav-logo-img">
+        <div class="nav-logo-texto">
+          <span class="nav-logo-nombre">Consultorio UTHH</span>
+          <span class="nav-logo-sub">Servicio Médico Universitario</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="activo">Inicio</a>
+        <a href="#noticias">Noticias</a>
+        <a href="#servicios">Servicios</a>
+        <a href="quienes_somos.html">¿Quiénes Somos?</a>
+      </nav>
+      <a href="login.html" class="nav-btn-acceso">Acceso al Sistema</a>
+      <button class="btn-hamburguesa" id="btn-hamburguesa" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="menu-movil" id="menu-movil">
+    <a href="index.html" class="activo">Inicio</a>
+    <a href="#noticias">Noticias</a>
+    <a href="#servicios">Servicios</a>
+    <a href="quienes_somos.html">¿Quiénes Somos?</a>
+    <a href="login.html" class="menu-movil-btn">Acceso al Sistema</a>
+  </div>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-contenido">
+      <p class="hero-institucion">Universidad Tecnológica de la Huasteca Hidalguense</p>
+      <h1 class="hero-titulo">Tu salud,<br>nuestra prioridad.</h1>
+      <p class="hero-desc">
+        Atención médica gratuita para toda la comunidad universitaria. Consulta tu historial clínico en línea.
+      </p>
+      <div class="hero-acciones">
+        <a href="login.html" class="btn-primario">Acceder al Sistema</a>
+        <a href="quienes_somos.html" class="btn-secundario">Conocer más</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion seccion-noticias" id="noticias">
+    <div class="seccion-inner">
+      <div class="seccion-encabezado">
+        <h2 class="seccion-titulo">Noticias del Consultorio</h2>
+        <p class="seccion-desc">Comunicados y avisos del Servicio Médico UTHH.</p>
+      </div>
+      <div class="carrusel-wrapper">
+        <button class="carrusel-btn" onclick="moverCarrusel(-1)" aria-label="Anterior">&#8249;</button>
+        <div id="carrusel-track" class="carrusel-track"></div>
+        <button class="carrusel-btn" onclick="moverCarrusel(1)" aria-label="Siguiente">&#8250;</button>
+      </div>
+      <div id="indicadores" class="carrusel-indicadores"></div>
+    </div>
+  </section>
+
+  <section class="seccion seccion-gris seccion-servicios" id="servicios">
+    <div class="seccion-inner">
+      <div class="seccion-encabezado">
+        <h2 class="seccion-titulo">¿Qué ofrecemos?</h2>
+        <p class="seccion-desc">Servicios disponibles para alumnos y trabajadores de la UTHH.</p>
+      </div>
+      <div class="servicios-grid">
+        <div class="servicio-card">
+          <div class="servicio-icono"></div>
+          <h3 class="servicio-titulo">Consulta General</h3>
+          <p class="servicio-desc">Atención de primer nivel con diagnóstico y tratamiento registrado digitalmente.</p>
+        </div>
+        <div class="servicio-card">
+          <div class="servicio-icono"></div>
+          <h3 class="servicio-titulo">Expediente Digital</h3>
+          <p class="servicio-desc">Historial de consultas disponible en línea con tu matrícula o número de trabajador.</p>
+        </div>
+        <div class="servicio-card">
+          <div class="servicio-icono"></div>
+          <h3 class="servicio-titulo">Tratamientos</h3>
+          <p class="servicio-desc">Registro de medicamentos, dosis, frecuencia y duración de cada prescripción.</p>
+        </div>
+        <div class="servicio-card">
+          <div class="servicio-icono"></div>
+          <h3 class="servicio-titulo">Primeros Auxilios</h3>
+          <p class="servicio-desc">Atención inmediata ante urgencias menores dentro de las instalaciones universitarias.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-nombre">Servicio Médico UTHH</span>
+          <p class="footer-desc">Atención médica gratuita para alumnos y trabajadores de la Universidad Tecnológica de la Huasteca Hidalguense.</p>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-titulo">Navegación</p>
+          <ul class="footer-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="login.html">Acceso al Sistema</a></li>
+            <li><a href="quienes_somos.html">¿Quiénes Somos?</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="footer-col-titulo">Contacto</p>
+          <ul class="footer-links">
+            <li>Carretera Huejutla – Chalahuiyapa S/N</li>
+            <li>C.P. 43000, Huejutla de Reyes, Hidalgo</li>
+            <li>Tel: 789 896 20 88 al 91</li>
+            <li><a href="https://www.uthh.edu.mx" target="_blank">www.uthh.edu.mx</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Servicio Médico UTHH — Todos los derechos reservados</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/paginatrabajo.js"></script>
+</body>
+</html>
