@@ -3,43 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noticias - Consultorio UTHH</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Noticias — Consultorio UTHH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/sistema.css">
 </head>
 <body>
 
+  <header class="sys-navbar">
+    <div class="sys-navbar-inner">
+      <a href="logeoadmin.html" class="sys-navbar-logo">
+        <img src="https://res.cloudinary.com/dffswlrkh/image/upload/v1773809668/pxn7noa5cgnykhsrh8fr.jpg" alt="Logo">
+        <span class="sys-navbar-nombre">Consultorio UTHH</span>
+      </a>
+      <nav class="sys-nav-links">
+        <a href="logeoadmin.html">Inicio</a>
+        <a href="consultas.html">Consultas</a>
+        <a href="pacientes.html">Pacientes</a>
+        <a href="usuarios.html">Usuarios</a>
+        <a href="noticias.html" class="activo">Noticias</a>
+      </nav>
+      <div class="sys-navbar-derecha">
+        <div class="sys-usuario-info">
+          <div class="sys-usuario-avatar">👤</div>
+          <span id="nombre-usuario">Cargando...</span>
+        </div>
+        <a href="login.html" class="sys-btn-salir" onclick="cerrarSesion()">Cerrar sesión</a>
+      </div>
+    </div>
+  </header>
 
-<header class="barra-superior">
-  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
-  <nav class="menu-principal">
-    <a href="plantilla_recepcion.html"> Inicio</a>
-    <a href="registro_paciente.html"> Registrar Paciente</a>
-    <a href="noticias.html" class="activo"> Noticias</a>
-    <a href="login.html" class="cerrar-sesion"> Cerrar sesión</a>
-  </nav>
-  <a href="perfilp.html" class="usuario-link">
-    👤 <span id="usuario-nombre"></span>
-  </a>
-</header>
+  <main class="sys-main">
 
-<main style="padding:30px 20px;">
-  <h2 class="titulo-pagina">📰 Noticias</h2>
+    <div class="sys-page-header">
+      <div>
+        <h1 class="sys-page-titulo">Noticias</h1>
+        <p class="sys-page-sub">Gestión de noticias del Servicio Médico.</p>
+      </div>
+      <button class="btn-sys-primario btn-sys-verde" onclick="abrirModal()">+ Nueva Noticia</button>
+    </div>
 
+    <div class="sys-tabla-wrap">
+      <table class="sys-tabla">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Fecha</th>
+            <th class="centro">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-noticias">
+          <tr><td colspan="5" class="sys-cargando">Cargando noticias...</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-  <div id="noticias-container" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;"></div>
+  </main>
 
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-noticia">
+    <div class="modal" style="max-width:560px;">
+      <button class="modal-cerrar" onclick="cerrarModal()">✕</button>
+      <h2 class="modal-titulo" id="modal-titulo">Nueva Noticia</h2>
 
-  <div id="sin-noticias" class="estado-vacio" style="display:none;">
-    <p class="icono">📰</p>
-    <p>No hay noticias publicadas.</p>
+      <div class="modal-campo">
+        <label class="modal-label">Título *</label>
+        <input type="text" class="modal-input" id="input-titulo" placeholder="Título de la noticia">
+      </div>
+
+      <div class="modal-campo">
+        <label class="modal-label">Descripción *</label>
+        <textarea class="modal-input" id="input-descripcion" rows="4" placeholder="Contenido de la noticia..." style="resize:vertical;"></textarea>
+      </div>
+
+      <div class="modal-campo">
+        <label class="modal-label">Link de imagen (Google u otra URL)</label>
+        <div style="display:flex;gap:8px;">
+          <input type="text" class="modal-input" id="input-link-imagen" placeholder="https://...">
+          <button class="btn-sys-primario" onclick="subirImagen()" id="btn-subir" style="white-space:nowrap;padding:10px 16px;">
+            ☁ Subir
+          </button>
+        </div>
+        <small style="font-size:11px;color:var(--texto-suave);margin-top:4px;display:block;">
+          Pega el link y haz click en Subir para guardarlo en Cloudinary.
+        </small>
+      </div>
+
+      <div id="preview-imagen" style="display:none;margin-top:8px;">
+        <img id="img-preview" src="" alt="Preview" style="width:100%;max-height:180px;object-fit:cover;border-radius:6px;border:1px solid var(--borde);">
+        <p style="font-size:11px;color:var(--verde);margin-top:4px;">✅ Imagen subida a Cloudinary</p>
+      </div>
+
+      <input type="hidden" id="input-imagen-url">
+
+      <div class="modal-acciones">
+        <button class="btn-modal-cancelar" onclick="cerrarModal()">Cancelar</button>
+        <button class="btn-modal-guardar" onclick="guardarNoticia()">Guardar</button>
+      </div>
+    </div>
   </div>
-</main>
 
-<footer>
-  <p>© 2025, Todos los derechos reservados</p>
-  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo, México | Tel: 789 896 2088 al 91</p>
-</footer>
+  <div class="toast" id="toast"></div>
 
-<script src="js/noticias.js"></script>
+  <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
+
+  <script src="js/noticias.js"></script>
 </body>
 </html>

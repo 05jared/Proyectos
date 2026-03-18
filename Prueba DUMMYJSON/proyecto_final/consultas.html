@@ -9,19 +9,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/sistema.css">
 </head>
-<body>  
+<body>
 
   <header class="sys-navbar">
     <div class="sys-navbar-inner">
       <a href="logeoadmin.html" class="sys-navbar-logo">
-        <img src="imagenes/logo.jpg" alt="Logo">
+        <img src="https://res.cloudinary.com/dffswlrkh/image/upload/v1773809668/pxn7noa5cgnykhsrh8fr.jpg" alt="Logo">
         <span class="sys-navbar-nombre">Consultorio UTHH</span>
       </a>
       <nav class="sys-nav-links">
         <a href="logeoadmin.html">Inicio</a>
-        <a href="consultas.html" class="activo">Consultas</a>
+        <a href="consultas.html">Consultas</a>
         <a href="pacientes.html">Pacientes</a>
         <a href="usuarios.html">Usuarios</a>
+        <a href="noticias.html">Noticias</a>
       </nav>
       <div class="sys-navbar-derecha">
         <div class="sys-usuario-info">
@@ -40,6 +41,13 @@
         <h1 class="sys-page-titulo">Consultas Registradas</h1>
         <p class="sys-page-sub">Historial de todas las consultas del Servicio Médico.</p>
       </div>
+      <a href="nueva_consulta.html" class="btn-sys-primario btn-sys-verde">+ Nueva Consulta</a>
+    </div>
+
+    <div class="sys-buscador">
+      <input type="text" id="buscador" class="sys-buscador-input"
+        placeholder="Buscar por paciente o motivo..."
+        oninput="buscar(this.value)">
     </div>
 
     <div class="sys-tabla-wrap">
@@ -64,6 +72,8 @@
     </div>
 
   </main>
+
+  <div class="toast" id="toast"></div>
 
   <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
 

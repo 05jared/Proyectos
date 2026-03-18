@@ -3,71 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registrar Usuario - UTHH</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Usuario — Consultorio UTHH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/sistema.css">
 </head>
 <body>
 
-
-<header class="barra-superior">
-  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
-  <nav class="menu-principal">
-    <a href="plantilla.html" class="activo"> Inicio</a>
-    <a href="consultas.html"> Consultas</a>
-    <a href="listado.html"> Pacientes</a>
-    <a href="registrar_usuario.html"> Registrar</a>
-    <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
-  </nav>
-  <a href="perfil.html" class="usuario-link">
-    👤 <span id="usuario-nombre"></span>
-  </a>
-</header>
-
-<main style="display:flex; justify-content:center; align-items:center; min-height:80vh;">
-
-  <div class="card" style="width:100%; max-width:440px;">
-
-
-    <div id="alerta" class="alerta" style="display:none;"></div>
-
-    <div style="text-align:center; font-size:3em; margin-bottom:10px;">👤</div>
-    <h2 class="card-titulo" style="text-align:center;">Registro de nuevo usuario</h2>
-
-    <div class="form-grupo">
-      <label>Nombre completo</label>
-      <input type="text" id="nombre" placeholder="Nombre y apellidos">
+  <header class="sys-navbar">
+    <div class="sys-navbar-inner">
+      <a href="logeoadmin.html" class="sys-navbar-logo">
+        <img src="https://res.cloudinary.com/dffswlrkh/image/upload/v1773809668/pxn7noa5cgnykhsrh8fr.jpg" alt="Logo">
+        <span class="sys-navbar-nombre">Consultorio UTHH</span>
+      </a>
+      <nav class="sys-nav-links">
+        <a href="logeoadmin.html">Inicio</a>
+        <a href="consultas.html">Consultas</a>
+        <a href="pacientes.html">Pacientes</a>
+        <a href="usuarios.html" class="activo">Usuarios</a>
+      </nav>
+      <div class="sys-navbar-derecha">
+        <div class="sys-usuario-info">
+          <div class="sys-usuario-avatar">👤</div>
+          <span id="nombre-usuario">Cargando...</span>
+        </div>
+        <a href="login.html" class="sys-btn-salir" onclick="cerrarSesion()">Cerrar sesión</a>
+      </div>
     </div>
-    <div class="form-grupo">
-      <label>Correo electrónico</label>
-      <input type="email" id="correo" placeholder="tu@correo.com">
-    </div>
-    <div class="form-grupo">
-      <label>Contraseña</label>
-      <input type="password" id="contrasena" placeholder="********">
-    </div>
-    <div class="form-grupo">
-      <label>Rol</label>
-      <select id="rol">
-        <option value="administrador">Administrador</option>
-        <option value="medico">Médico</option>
-        <option value="enfermera">Enfermera</option>
-      </select>
+  </header>
+
+  <main class="sys-main">
+
+    <div class="sys-page-header">
+      <div>
+        <h1 class="sys-page-titulo" id="titulo-pagina">Nuevo Usuario</h1>
+        <p class="sys-page-sub">Completa los datos del usuario.</p>
+      </div>
+      <a href="usuarios.html" class="btn-sys-primario" style="background:var(--texto-suave);">← Volver</a>
     </div>
 
-    <div style="display:flex; gap:10px; margin-top:10px;">
-      <button class="btn btn-cancelar" onclick="history.back()">Regresar</button>
-      <button class="btn btn-guardar" id="btn-registrar" onclick="registrarUsuario()">Registrar</button>
+    <div class="sys-card" style="max-width:560px;">
+      <h2 class="sys-card-titulo">🔑 Datos del Usuario</h2>
+
+      <div class="modal-campo">
+        <label class="modal-label">Nombre *</label>
+        <input type="text" class="modal-input" id="input-nombre" placeholder="Nombre(s)">
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Apellido Paterno *</label>
+        <input type="text" class="modal-input" id="input-apellido-paterno">
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Apellido Materno</label>
+        <input type="text" class="modal-input" id="input-apellido-materno">
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Correo Electrónico *</label>
+        <input type="email" class="modal-input" id="input-correo" placeholder="correo@uthh.edu.mx">
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Contraseña *</label>
+        <input type="password" class="modal-input" id="input-contrasena" placeholder="••••••••">
+        <small style="font-size:11px;color:var(--texto-suave);margin-top:4px;display:block;" id="hint-pass">Mínimo 6 caracteres.</small>
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Rol *</label>
+        <select class="modal-select" id="input-rol">
+          <option value="">— Selecciona —</option>
+          <option value="Administrador">Administrador</option>
+          <option value="Recepcionista">Recepcionista</option>
+          <option value="Doctora">Doctora</option>
+        </select>
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:28px;padding-top:20px;border-top:1px solid var(--borde);">
+        <a href="usuarios.html" class="btn-modal-cancelar">Cancelar</a>
+        <button class="btn-modal-guardar" id="btn-guardar" onclick="guardarUsuario()" style="padding:12px 32px;font-size:14px;">
+          💾 Guardar Usuario
+        </button>
+      </div>
     </div>
 
-  </div>
+  </main>
 
-</main>
+  <div class="toast" id="toast"></div>
 
-<footer>
-  <p>© 2025, Todos los derechos reservados</p>
-  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo, México | Tel: 789 896 2088 al 91</p>
-</footer>
+  <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
 
-<script src="js/registrar-usuario.js"></script>
+  <script src="js/registrar_usuario.js"></script>
 </body>
 </html>

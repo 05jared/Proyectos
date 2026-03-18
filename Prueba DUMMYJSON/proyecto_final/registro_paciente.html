@@ -3,132 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Paciente - UTHH</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Paciente — Consultorio UTHH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/sistema.css">
 </head>
 <body>
 
-
-<header class="barra-superior">
-  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
-  <nav class="menu-principal">
-    <a href="plantilla_recepcion.html" class="activo"> Inicio</a>
-    <a href="registro_paciente.html"> Registrar Paciente</a>
-    <a href="noticias.html"> Noticias</a>
-    <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
-  </nav>
-  <a href="perfilp.html" class="usuario-link">
-    👤 <span id="usuario-nombre"></span>
-  </a>
-</header>
-
-<main>
-
-
-  <div id="alerta" class="alerta" style="display:none;"></div>
-
-  <div class="card" style="max-width:1000px; margin:0 auto;">
-    <h2 class="card-titulo"> Registro de Nuevo Paciente</h2>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px;">
-
-      <section>
-        <h3 style="color:#0f4c45; margin-bottom:16px;">📋 Datos Personales</h3>
-
-        <div class="form-grupo">
-          <label>Nombre <span style="color:#9e1b34;">*</span></label>
-          <input type="text" id="nombre" placeholder="Nombre(s)">
+  <header class="sys-navbar">
+    <div class="sys-navbar-inner">
+      <a href="logeoadmin.html" class="sys-navbar-logo">
+        <img src="https://res.cloudinary.com/dffswlrkh/image/upload/v1773809668/pxn7noa5cgnykhsrh8fr.jpg" alt="Logo">
+        <span class="sys-navbar-nombre">Consultorio UTHH</span>
+      </a>
+      <nav class="sys-nav-links">
+        <a href="logeoadmin.html">Inicio</a>
+        <a href="consultas.html">Consultas</a>
+        <a href="pacientes.html" class="activo">Pacientes</a>
+        <a href="usuarios.html">Usuarios</a>
+      </nav>
+      <div class="sys-navbar-derecha">
+        <div class="sys-usuario-info">
+          <div class="sys-usuario-avatar">👤</div>
+          <span id="nombre-usuario">Cargando...</span>
         </div>
-        <div class="form-grupo">
-          <label>Apellido Paterno <span style="color:#9e1b34;">*</span></label>
-          <input type="text" id="apellido-paterno">
-        </div>
-        <div class="form-grupo">
-          <label>Apellido Materno <span style="color:#9e1b34;">*</span></label>
-          <input type="text" id="apellido-materno">
-        </div>
-        <div class="form-grupo">
-          <label>Fecha de Nacimiento <span style="color:#9e1b34;">*</span></label>
-          <input type="date" id="fecha-nacimiento">
-        </div>
-        <div class="form-grupo">
-          <label>Sexo <span style="color:#9e1b34;">*</span></label>
-          <select id="sexo">
-            <option value="">— Selecciona —</option>
+        <a href="login.html" class="sys-btn-salir" onclick="cerrarSesion()">Cerrar sesión</a>
+      </div>
+    </div>
+  </header>
 
-          </select>
-        </div>
-        <div class="form-grupo">
-          <label>Correo Electrónico <span style="color:#9e1b34;">*</span></label>
-          <input type="email" id="correo" placeholder="correo@ejemplo.com">
-        </div>
-        <div class="form-grupo">
-          <label>Teléfono <span style="color:#9e1b34;">*</span></label>
-          <input type="text" id="telefono" placeholder="10 dígitos">
-        </div>
-        <div class="form-grupo">
-          <label>Dirección <span style="color:#9e1b34;">*</span></label>
-          <input type="text" id="direccion" placeholder="Calle, colonia, municipio">
-        </div>
-      </section>
+  <main class="sys-main">
 
+    <div class="sys-page-header">
+      <div>
+        <h1 class="sys-page-titulo" id="titulo-pagina">Nuevo Paciente</h1>
+        <p class="sys-page-sub">Completa los datos del paciente.</p>
+      </div>
+      <a href="pacientes.html" class="btn-sys-primario" style="background:var(--texto-suave);">← Volver</a>
+    </div>
 
-      <section>
-        <h3 style="color:#0f4c45; margin-bottom:16px;"> Datos Institucionales</h3>
+    <div class="sys-card">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
 
-        <div class="form-grupo">
-          <label>Tipo de Paciente <span style="color:#9e1b34;">*</span></label>
-          <select id="tipo-paciente" onchange="mostrarCamposAlumno()">
-            <option value="">— Selecciona —</option>
+        <!-- DATOS PERSONALES -->
+        <div>
+          <h2 class="sys-card-titulo">📋 Datos Personales</h2>
 
-          </select>
-        </div>
-        <div class="form-grupo">
-          <label>Matrícula / N° Trabajador <span style="color:#9e1b34;">*</span></label>
-          <input type="text" id="matricula" placeholder="Ej: 20230001">
-        </div>
-
-
-        <div id="bloque-alumno" style="display:none;">
-          <div class="form-grupo">
-            <label>Carrera</label>
-            <select id="carrera">
+          <div class="modal-campo">
+            <label class="modal-label">Nombre *</label>
+            <input type="text" class="modal-input" id="input-nombre" placeholder="Nombre(s)">
+          </div>
+          <div class="modal-campo">
+            <label class="modal-label">Apellido Paterno *</label>
+            <input type="text" class="modal-input" id="input-apellido-paterno">
+          </div>
+          <div class="modal-campo">
+            <label class="modal-label">Apellido Materno</label>
+            <input type="text" class="modal-input" id="input-apellido-materno">
+          </div>
+          <div class="modal-campo">
+            <label class="modal-label">Fecha de Nacimiento *</label>
+            <input type="date" class="modal-input" id="input-fecha-nacimiento">
+          </div>
+          <div class="modal-campo">
+            <label class="modal-label">Sexo *</label>
+            <select class="modal-select" id="input-sexo">
               <option value="">— Selecciona —</option>
-
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
             </select>
           </div>
-          <div class="form-grupo">
-            <label>Cuatrimestre</label>
-            <select id="cuatrimestre">
-              <option value="">— Selecciona —</option>
-
-            </select>
+          <div class="modal-campo">
+            <label class="modal-label">Correo Electrónico</label>
+            <input type="email" class="modal-input" id="input-correo" placeholder="correo@ejemplo.com">
           </div>
-          <div class="form-grupo">
-            <label>Grupo</label>
-            <select id="grupo">
-              <option value="">— Selecciona —</option>
-
-            </select>
+          <div class="modal-campo">
+            <label class="modal-label">Teléfono</label>
+            <input type="text" class="modal-input" id="input-telefono" placeholder="10 dígitos">
+          </div>
+          <div class="modal-campo">
+            <label class="modal-label">Dirección</label>
+            <input type="text" class="modal-input" id="input-direccion" placeholder="Calle, colonia, municipio">
           </div>
         </div>
 
-        <div style="display:flex; gap:10px; margin-top:20px;">
-          <a href="listado.html" class="btn btn-cancelar">✖ Cancelar</a>
-          <button class="btn btn-guardar" id="btn-registrar" onclick="registrarPaciente()"> Registrar Paciente</button>
+        <!-- DATOS INSTITUCIONALES -->
+        <div>
+          <h2 class="sys-card-titulo">🏫 Datos Institucionales</h2>
+
+          <div class="modal-campo">
+            <label class="modal-label">Tipo de Paciente *</label>
+            <select class="modal-select" id="input-tipo" onchange="mostrarCamposAlumno()">
+              <option value="">— Selecciona —</option>
+            </select>
+          </div>
+          <div class="modal-campo">
+            <label class="modal-label">Matrícula / N° Trabajador *</label>
+            <input type="text" class="modal-input" id="input-matricula" placeholder="Ej: 20230001">
+          </div>
+
+          <div id="bloque-alumno" style="display:none;">
+            <div class="modal-campo">
+              <label class="modal-label">Carrera</label>
+              <select class="modal-select" id="input-carrera">
+                <option value="">— Selecciona —</option>
+                <option value="Tic's">Tic's</option>
+                <option value="Mecatronica">Mecatronica</option>
+              </select>
+            </div>
+            <div class="modal-campo">
+              <label class="modal-label">Cuatrimestre</label>
+              <select class="modal-select" id="input-cuatrimestre">
+                <option value="">— Selecciona —</option>
+                <option>1</option><option>2</option><option>3</option>
+                <option>4</option><option>5</option><option>6</option>
+                <option>7</option><option>8</option><option>9</option>
+              </select>
+            </div>
+            <div class="modal-campo">
+              <label class="modal-label">Grupo</label>
+              <select class="modal-select" id="input-grupo">
+                <option value="">— Selecciona —</option>
+                <option>A</option><option>B</option><option>C</option><option>D</option>
+              </select>
+            </div>
+          </div>
+
         </div>
-      </section>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:28px; padding-top:20px; border-top:1px solid var(--borde);">
+        <a href="pacientes.html" class="btn-modal-cancelar">Cancelar</a>
+        <button class="btn-modal-guardar" id="btn-guardar" onclick="guardarPaciente()" style="padding:12px 32px; font-size:14px;">
+          💾 Guardar Paciente
+        </button>
+      </div>
 
     </div>
-  </div>
 
-</main>
+  </main>
 
-<footer>
-  <p>© 2025, Todos los derechos reservados</p>
-  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo | Tel: 789 896 2088 al 91</p>
-</footer>
+  <div class="toast" id="toast"></div>
 
-<script src="js/registro_paciente.js"></script>
+  <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
+
+  <script src="js/registro_paciente.js"></script>
 </body>
 </html>
