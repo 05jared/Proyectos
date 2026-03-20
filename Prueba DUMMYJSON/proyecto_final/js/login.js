@@ -83,12 +83,18 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   try {
     if (esPaciente) {
       const data = await fetch(`${API}/pacientes`).then(r => r.json());
-      const p = data.find(x => x.matricula_o_numero_trabajador == user);
+      console.log('Campos del paciente:', data[0] ? Object.keys(data[0]) : 'Sin datos');
+      console.log('Buscando:', user);
+      const p = data.find(x =>
+        String(x.matricula_o_numero_trabajador) === String(user) ||
+        String(x.matricula) === String(user)
+      );
+      console.log('Encontrado:', p);
 
       if (p) {
         localStorage.setItem('usuario', JSON.stringify(p));
         localStorage.setItem('rol', 'paciente');
-        window.location.href = 'historial.html';
+        window.location.href = 'logeopacientes.html';
       } else {
         mostrarError('Matrícula no encontrada.');
       }

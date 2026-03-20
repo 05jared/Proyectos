@@ -1,4 +1,5 @@
 const API_URL = 'https://api-pacientes-uthh.vercel.app/api';
+const NEWSDATA_KEY = 'pub_b6479f60221e4951bc4741f196146870';
 
 /* ── NAVBAR ── */
 const navbar = document.getElementById('navbar');
@@ -9,19 +10,16 @@ window.addEventListener('scroll', () => {
 /* ── HAMBURGUESA ── */
 const btnH = document.getElementById('btn-hamburguesa');
 const menuM = document.getElementById('menu-movil');
-
 btnH.addEventListener('click', () => {
   const ab = menuM.classList.toggle('abierto');
   btnH.classList.toggle('abierto', ab);
 });
-
 menuM.querySelectorAll('a').forEach(a =>
   a.addEventListener('click', () => {
     menuM.classList.remove('abierto');
     btnH.classList.remove('abierto');
   })
 );
-
 document.addEventListener('click', (e) => {
   if (!btnH.contains(e.target) && !menuM.contains(e.target)) {
     menuM.classList.remove('abierto');
@@ -34,16 +32,69 @@ let indiceActual = 0;
 let noticias = [];
 let autoplayTimer = null;
 
-async function cargarNoticias() {
+/* Trae las noticias internas del sistema */
+async function obtenerNoticiasInternas() {
   try {
     const response = await fetch(`${API_URL}/noticias`);
-    noticias = await response.json();
-    renderCarrusel();
-    renderIndicadores();
-    iniciarAutoplay();
+    const data = await response.json();
+    // Normaliza al formato común
+    return data.map(n => ({
+      titulo:      n.titulo,
+      descripcion: n.descripcion || '',
+      imagen:      n.imagen || null,
+      categoria:   n.categoria || 'Aviso',
+      link:        `noticia.html?id=${n.id_noticia}`,
+      externo:     false
+    }));
   } catch (error) {
-    console.error('Error al cargar noticias:', error);
+    console.error('Error al cargar noticias internas:', error);
+    return [];
   }
+}
+
+/* Trae noticias de salud desde NewsData.io */
+async function obtenerNoticiasExternas() {
+  try {
+    const url = `https://newsdata.io/api/1/latest?apikey=${NEWSDATA_KEY}&category=health&language=es&country=mx`;
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (!data.results) return [];
+
+    // Toma máximo 6 noticias externas y normaliza al mismo formato
+    return data.results.slice(0, 6).map(n => ({
+      titulo:      n.title || 'Sin título',
+      descripcion: n.description || n.content || '',
+      imagen:      n.image_url || null,
+      categoria:   'Salud',
+      link:        n.link || '#',
+      externo:     true
+    }));
+  } catch (error) {
+    console.error('Error al cargar noticias externas (NewsData):', error);
+    return [];
+  }
+}
+
+/* Carga ambas fuentes y las combina */
+async function cargarNoticias() {
+  const [internas, externas] = await Promise.all([
+    obtenerNoticiasInternas(),
+    obtenerNoticiasExternas()
+  ]);
+
+  // Primero las del consultorio, luego las de salud general
+  noticias = [...internas, ...externas];
+
+  if (noticias.length === 0) {
+    document.getElementById('carrusel-track').innerHTML =
+      '<p style="color:var(--texto-suave);padding:40px;">No hay noticias disponibles.</p>';
+    return;
+  }
+
+  renderCarrusel();
+  renderIndicadores();
+  iniciarAutoplay();
 }
 
 function renderCarrusel() {
@@ -57,13 +108,27 @@ function renderCarrusel() {
 
     const card = document.createElement('div');
     card.classList.add('noticia-card');
+
+    // Badge diferente para noticias externas
+    const badgeExtra = noticia.externo
+      ? '<span class="noticia-fuente">🌐 Noticias de Salud</span>'
+      : '';
+
     card.innerHTML = `
-      ${noticia.imagen ? `<img src="${noticia.imagen}" alt="${noticia.titulo}">` : ''}
-      <span class="noticia-categoria">${noticia.categoria || 'Aviso'}</span>
+      ${noticia.imagen
+        ? `<img src="${noticia.imagen}" alt="${noticia.titulo}" onerror="this.style.display='none'">`
+        : ''}
+      <span class="noticia-categoria">${noticia.categoria}</span>
+      ${badgeExtra}
       <h3>${noticia.titulo}</h3>
       <p>${resumen}</p>
-      <a href="noticia.html?id=${noticia.id_noticia}" class="noticia-btn-mas">Saber más →</a>
+      <a href="${noticia.link}"
+         class="noticia-btn-mas"
+         ${noticia.externo ? 'target="_blank" rel="noopener noreferrer"' : ''}>
+        Saber más →
+      </a>
     `;
+
     track.appendChild(card);
   });
 
@@ -105,10 +170,11 @@ function moverCarrusel(direccion) {
   if (!cards.length) return;
 
   const maxIndice = Math.max(0, noticias.length - 3);
-  indiceActual = Math.min(Math.max(indiceActual + direccion, 0), maxIndice);
+  indiceActual = indiceActual + direccion;
 
-  // si llega al final vuelve al inicio
-  if (indiceActual >= noticias.length) indiceActual = 0;
+  // Loop infinito: si pasa del final vuelve al inicio y viceversa
+  if (indiceActual > maxIndice) indiceActual = 0;
+  if (indiceActual < 0) indiceActual = maxIndice;
 
   actualizarPosicion();
   reiniciarAutoplay();
@@ -124,7 +190,7 @@ function iniciarAutoplay() {
     const maxIndice = Math.max(0, noticias.length - 3);
     indiceActual = indiceActual >= maxIndice ? 0 : indiceActual + 1;
     actualizarPosicion();
-  }, 4000); // cada 4 segundos
+  }, 4000);
 }
 
 function reiniciarAutoplay() {

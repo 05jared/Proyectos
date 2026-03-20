@@ -3,66 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editar Mis Datos - UTHH</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Editar Mis Datos — Consultorio UTHH</title>
+  <link rel="stylesheet" href="styles/sistema.css">
 </head>
 <body>
 
-<header class="barra-superior">
-  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
-  <nav class="menu-principal">
-    <a href="historial.html"> Historial</a>
-    <a href="login.html" class="cerrar-sesion"> Cerrar sesión</a>
-  </nav>
-
-  <a href="#" class="usuario-link">👤 <span id="paciente-nombre"></span></a>
-</header>
-
-<main style="display:flex; justify-content:center; align-items:center; min-height:80vh; padding:20px;">
-  <div class="card" style="width:100%; max-width:500px;">
-
-    <div id="alerta" class="alerta" style="display:none;"></div>
-
-    <h2 class="card-titulo"> Editar Mis Datos</h2>
-
-    <div class="form-grupo">
-      <label>Nombre</label>
-      <input type="text" id="nombre">
+  <header class="sys-navbar">
+    <div class="sys-navbar-inner">
+      <a href="logeopacientes.html" class="sys-navbar-logo">
+        <img src="https://res.cloudinary.com/dffswlrkh/image/upload/v1773809668/pxn7noa5cgnykhsrh8fr.jpg" alt="Logo">
+        <span class="sys-navbar-nombre">Consultorio UTHH</span>
+      </a>
+      <nav class="sys-nav-links">
+        <a href="logeopacientes.html">Historial</a>
+      </nav>
+      <a href="editar_personal.html" class="sys-usuario-info" style="text-decoration:none; cursor:pointer;">
+        <div class="sys-usuario-avatar">👤</div>
+        <span id="nombre-usuario">Cargando...</span>
+      </a>
+      <a href="login.html" class="sys-btn-salir" onclick="cerrarSesion()">Cerrar sesión</a>
     </div>
-    <div class="form-grupo">
-      <label>Apellido Paterno</label>
-      <input type="text" id="apellido-paterno">
-    </div>
-    <div class="form-grupo">
-      <label>Apellido Materno</label>
-      <input type="text" id="apellido-materno">
-    </div>
-    <div class="form-grupo">
-      <label>Fecha de Nacimiento</label>
-      <input type="date" id="fecha-nacimiento">
-    </div>
-    <div class="form-grupo">
-      <label>Correo Electrónico</label>
-      <input type="email" id="correo">
-    </div>
-    <div class="form-grupo">
-      <label>Teléfono</label>
-      <input type="text" id="telefono">
+  </header>
+
+  <main class="sys-main" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+
+    <div class="sys-page-header" style="width:100%; max-width:560px;">
+      <div>
+        <h1 class="sys-page-titulo">Editar Mis Datos</h1>
+        <p class="sys-page-sub">Actualiza tu información personal.</p>
+      </div>
+      <a href="logeopacientes.html" class="btn-sys-primario" style="background:var(--texto-suave);">← Volver</a>
     </div>
 
-    <div style="display:flex; gap:10px; margin-top:16px;">
-      <a href="historial.html" class="btn btn-cancelar" style="flex:1; text-align:center;">Volver</a>
-      <button class="btn btn-guardar" id="btn-guardar" onclick="guardarDatos()" style="flex:1;">Guardar Cambios</button>
+    <div class="sys-card" style="width:100%; max-width:560px;">
+
+      <div id="alerta" class="toast" style="position:relative;bottom:auto;right:auto;transform:none;opacity:1;margin-bottom:16px;display:none;"></div>
+
+      <div class="modal-campo">
+        <label class="modal-label">Nombre</label>
+        <input type="text" class="modal-input" id="nombre">
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Apellido Paterno</label>
+        <input type="text" class="modal-input" id="apellido-paterno">
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Apellido Materno</label>
+        <input type="text" class="modal-input" id="apellido-materno">
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Fecha de Nacimiento</label>
+        <input type="date" class="modal-input" id="fecha-nacimiento">
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Correo Electrónico</label>
+        <input type="email" class="modal-input" id="correo">
+      </div>
+      <div class="modal-campo">
+        <label class="modal-label">Teléfono</label>
+        <input type="text" class="modal-input" id="telefono">
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:28px; padding-top:20px; border-top:1px solid var(--borde);">
+        <a href="logeopacientes.html" class="btn-modal-cancelar">Volver</a>
+        <button class="btn-modal-guardar" id="btn-guardar" onclick="guardarDatos()">
+          💾 Guardar Cambios
+        </button>
+      </div>
+
     </div>
 
-  </div>
-</main>
+  </main>
 
-<footer>
-  <p>© 2025, Todos los derechos reservados</p>
-  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo, México | Tel: 789 896 2088 al 91</p>
-</footer>
+  <div class="toast" id="toast"></div>
 
-<script src="js/editar_personal.js"></script>
+  <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
+
+  <script src="js/editar_personal.js"></script>
 </body>
 </html>

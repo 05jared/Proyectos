@@ -3,80 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ver Consulta - UTHH</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Ver Consulta — Consultorio UTHH</title>
+  <link rel="stylesheet" href="styles/sistema.css">
 </head>
 <body>
 
+  <header class="sys-navbar">
+    <div class="sys-navbar-inner">
+      <a href="logeopacientes.html" class="sys-navbar-logo">
+        <img src="https://res.cloudinary.com/dffswlrkh/image/upload/v1773809668/pxn7noa5cgnykhsrh8fr.jpg" alt="Logo">
+        <span class="sys-navbar-nombre">Consultorio UTHH</span>
+      </a>
+      <nav class="sys-nav-links">
+        <a href="logeopacientes.html">Historial</a>
+      </nav>
+      <a href="editar_personal.html" class="sys-usuario-info" style="text-decoration:none; cursor:pointer;">
+        <div class="sys-usuario-avatar">👤</div>
+        <span id="nombre-usuario">Cargando...</span>
+      </a>
+      <a href="login.html" class="sys-btn-salir" onclick="cerrarSesion()">Cerrar sesión</a>
+    </div>
+  </header>
 
-<header class="barra-superior">
-  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
-  <nav class="menu-principal">
-    <a href="paginatrabajo.html"> Inicio</a>
-    <a href="consultas.html"> Consultas</a>
-    <a href="listado.html"> Pacientes</a>
-    <a href="registro_paciente.html"> Registrar</a>
-    <a href="login.html" class="cerrar-sesion">🚪 Cerrar sesión</a>
-  </nav>
-  <a href="perfil.html" class="usuario-link">
-    👤 <span id="usuario-nombre"></span>
-  </a>
-</header>
+  <main class="sys-main">
 
-<main style="max-width:860px; margin:0 auto; padding:25px 20px;">
-
-
-  <div class="card">
-
-    <div class="card-titulo">🩺 Consulta <span id="consulta-id"></span></div>
-    <div class="detalle-grid">
-      <div class="detalle-item">
-        <label> Paciente</label>
-        <span id="con-paciente"></span>
+    <div class="sys-page-header">
+      <div>
+        <h1 class="sys-page-titulo">Detalle de Consulta <span id="consulta-id"></span></h1>
+        <p class="sys-page-sub">Información completa de tu consulta médica.</p>
       </div>
-      <div class="detalle-item">
-        <label> Fecha</label>
-        <span id="con-fecha"></span>
-      </div>
-      <div class="detalle-item">
-        <label> Hora de entrada</label>
-        <span id="con-hora-entrada"></span>
-      </div>
-      <div class="detalle-item">
-        <label> Hora de salida</label>
-        <span id="con-hora-salida"></span>
-      </div>
-      <div class="detalle-item" style="grid-column: span 2;">
-        <label> Motivo de consulta</label>
-        <span id="con-motivo"></span>
+      <a href="logeopacientes.html" class="btn-sys-primario" style="background:var(--texto-suave);">← Regresar</a>
+    </div>
+
+    <div class="sys-card">
+      <h2 class="sys-card-titulo">🩺 Datos de la consulta</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div>
+          <p style="font-size:.75rem;font-weight:500;text-transform:uppercase;color:var(--texto-suave);margin-bottom:.25rem;">Paciente</p>
+          <p id="con-paciente" style="font-weight:500;">—</p>
+        </div>
+        <div>
+          <p style="font-size:.75rem;font-weight:500;text-transform:uppercase;color:var(--texto-suave);margin-bottom:.25rem;">Fecha</p>
+          <p id="con-fecha" style="font-weight:500;">—</p>
+        </div>
+        <div>
+          <p style="font-size:.75rem;font-weight:500;text-transform:uppercase;color:var(--texto-suave);margin-bottom:.25rem;">Hora de entrada</p>
+          <p id="con-hora-entrada" style="font-weight:500;">—</p>
+        </div>
+        <div>
+          <p style="font-size:.75rem;font-weight:500;text-transform:uppercase;color:var(--texto-suave);margin-bottom:.25rem;">Hora de salida</p>
+          <p id="con-hora-salida" style="font-weight:500;">—</p>
+        </div>
+        <div style="grid-column:span 2;">
+          <p style="font-size:.75rem;font-weight:500;text-transform:uppercase;color:var(--texto-suave);margin-bottom:.25rem;">Motivo de consulta</p>
+          <p id="con-motivo" style="font-weight:500;">—</p>
+        </div>
       </div>
     </div>
-  </div>
 
+    <div id="diagnosticos-container"></div>
 
-  <div id="diagnosticos-container"></div>
+    <div id="sin-diagnosticos" class="sys-cargando" style="display:none; text-align:center; padding:2rem;">
+      Esta consulta aún no tiene diagnósticos registrados.
+    </div>
 
+  </main>
 
-  <div id="sin-diagnosticos" class="estado-vacio" style="display:none;">
-    <p class="icono"></p>
-    <p>Esta consulta aún no tiene diagnósticos registrados.</p>
-  </div>
+  <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
 
-
-  <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
-    <a href="consultas.html" class="btn btn-volver">← Regresar a consultas</a>
-
-    <a id="btn-editar" href="#" class="btn btn-editar"> Editar esta consulta</a>
-    <a id="btn-ver-paciente" href="#" class="btn btn-ver"> Ver ficha del paciente</a>
-  </div>
-
-</main>
-
-<footer>
-  <p>© 2025, Todos los derechos reservados</p>
-  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo | Tel: 789 896 2088 al 91</p>
-</footer>
-
-<script src="js/ver_consulta.js"></script>
+  <script src="js/ver-consulta.js"></script>
 </body>
 </html>

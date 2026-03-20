@@ -3,56 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Historial de Consultas - UTHH</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Historial — Consultorio UTHH</title>
+  <link rel="stylesheet" href="styles/sistema.css">
 </head>
 <body>
 
-<header class="barra-superior">
-  <div class="barra-logo"><span></span><span>Consultorio UTHH</span></div>
-  <nav class="menu-principal">
-    <a href="historial.html" class="activo"> Historial</a>
-    <a href="login.html" class="cerrar-sesion"> Cerrar sesión</a>
-  </nav>
+  <header class="sys-navbar">
+    <div class="sys-navbar-inner">
+      <a href="logeopacientes.html" class="sys-navbar-logo">
+        <img src="https://res.cloudinary.com/dffswlrkh/image/upload/v1773809668/pxn7noa5cgnykhsrh8fr.jpg" alt="Logo">
+        <span class="sys-navbar-nombre">Consultorio UTHH</span>
+      </a>
+      <nav class="sys-nav-links">
+        <a href="logeopacientes.html" class="activo">Historial</a>
+      </nav>
+      <a href="editar_personal.html" class="sys-usuario-info" style="text-decoration:none; cursor:pointer;">
+        <div class="sys-usuario-avatar">👤</div>
+        <span id="nombre-usuario">Cargando...</span>
+      </a>
+      <a href="login.html" class="sys-btn-salir" onclick="cerrarSesion()">Cerrar sesión</a>
+    </div>
+  </header>
 
-  <a href="editar_personal.html" class="usuario-link">👤 <span id="paciente-nombre"></span></a>
-</header>
+  <main class="sys-main">
 
-<main>
+    <div class="sys-page-header">
+      <div>
+        <h1 class="sys-page-titulo" id="titulo-bienvenida">Mi Historial de Consultas</h1>
+        <p class="sys-page-sub">Consulta tu historial médico en el Servicio Médico UTHH.</p>
+      </div>
+    </div>
 
-  <h2 class="titulo-pagina"> Historial de Consultas</h2>
+    <div class="sys-tabla-wrap">
+      <table class="sys-tabla">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Hora entrada</th>
+            <th>Motivo</th>
+            <th>Hora salida</th>
+            <th class="centro">Acción</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-body">
+          <tr>
+            <td colspan="5" class="sys-cargando">Cargando historial...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <p class="resumen">Paciente: <strong id="paciente-nombre-resumen"></strong></p>
+    <div id="sin-consultas" class="sys-cargando" style="display:none; text-align:center; padding:2rem;">
+      No tienes consultas registradas.
+    </div>
 
-  <div class="tabla-container">
-    <div class="tabla-titulo">Mis Consultas</div>
-    <table>
-      <thead>
-        <tr>
-          <th>Fecha</th>
-          <th>Hora</th>
-          <th>Motivo</th>
-          <th>Salida</th>
-          <th>Acción</th>
-        </tr>
-      </thead>
-      <!-- JS llenará con fetch('/api/historial/:id') -->
-      <tbody id="tabla-body"></tbody>
-    </table>
-  </div>
+  </main>
 
-  <div id="sin-consultas" class="estado-vacio" style="display:none;">
-    <p class="icono"></p>
-    <p>No tienes consultas registradas.</p>
-  </div>
+  <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
 
-</main>
-
-<footer>
-  <p>© 2025, Todos los derechos reservados</p>
-  <p>Carretera Huejutla - Chalahuiyapa S/N, C.P. 43000, Huejutla de Reyes, Hidalgo, México | Tel: 789 896 2088 al 91</p>
-</footer>
-
-<script src="js/historial.js"></script>
+  <script src="js/historial.js"></script>
 </body>
 </html>
