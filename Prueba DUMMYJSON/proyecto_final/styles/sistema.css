@@ -591,4 +591,39 @@ body {
   .sys-tabla tbody td { padding: 10px 10px; font-size: 12px; }
 }
 
- 
+ /* ══ RESPONSIVE ADICIONAL (no modifica estilos existentes) ══ */
+
+@media (max-width: 430px) {
+  .sys-navbar-inner { padding: 0 14px; gap: 10px; }
+  .sys-main { padding: 16px 12px; }
+  .modal { padding: 28px 18px; }
+  .stats-grid { gap: 10px; }
+  .stat-card { padding: 18px 14px; gap: 12px; }
+  .toast { right: 12px; bottom: 16px; left: 12px; max-width: unset; }
+}
+
+@media (max-width: 380px) {
+  .sys-navbar-inner { padding: 0 10px; }
+  .sys-main { padding: 14px 10px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat-num { font-size: 26px; }
+  .modal { padding: 24px 14px; }
+  .modal-acciones { flex-direction: column; }
+  .confirm-acciones { flex-direction: column; }
+  .sys-card { padding: 20px 14px; }
+}
+
+@media (max-width: 360px) {
+  .sys-navbar-inner { padding: 0 8px; }
+  .sys-main { padding: 12px 8px; }
+  .modal { padding: 20px 12px; }
+  .sys-tabla thead th,
+  .sys-tabla tbody td { padding: 8px 8px; font-size: 11px; }
+}
+
+@media (max-width: 320px) {
+  .sys-main { padding: 10px 6px; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .modal { padding: 18px 10px; }
+  .sys-navbar-nombre { display: none; }
+}

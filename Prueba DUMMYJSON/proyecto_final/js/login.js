@@ -2,10 +2,12 @@ const API = 'https://api-pacientes-uthh.vercel.app/api';
 
 let esPaciente = false;
 
+/* ── NAVBAR ── */
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
 });
 
+/* ── HAMBURGUESA ── */
 const btnMenu = document.getElementById('btn-hamburguesa');
 const menuMov = document.getElementById('menu-movil');
 
@@ -21,11 +23,13 @@ document.addEventListener('click', (e) => {
   }
 });
 
+/* ── VER/OCULTAR CONTRASEÑA ── */
 document.getElementById('btn-toggle-pass').addEventListener('click', () => {
   const pass = document.getElementById('password');
   pass.type = pass.type === 'password' ? 'text' : 'password';
 });
 
+/* ── DETECTAR SI ES PACIENTE O USUARIO DEL SISTEMA ── */
 function detectarTipo(val) {
   esPaciente = /^\d{5,}$/.test(val.trim());
   const campoPass = document.getElementById('campo-password');
@@ -41,6 +45,7 @@ function detectarTipo(val) {
   }
 }
 
+/* ── VALIDACIÓN DE CAMPOS ── */
 function validar() {
   const user = document.getElementById('usuario').value.trim();
   const pass = document.getElementById('password').value.trim();
@@ -67,17 +72,32 @@ function validar() {
   return ok;
 }
 
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-
+/* ── INTERCEPTAR CLICK DEL BOTÓN ANTES DE QUE reCAPTCHA ACTÚE ──
+   Si los campos están vacíos, cancela el captcha.
+   Si están llenos, deja que reCAPTCHA se ejecute y llame a onCaptchaSuccess ── */
+document.getElementById('btn-login').addEventListener('click', (e) => {
   document.getElementById('login-error').classList.remove('visible');
-  if (!validar()) return;
+
+  if (!validar()) {
+    // Campos vacíos — cancela todo, reCAPTCHA no se dispara
+    e.stopImmediatePropagation();
+    grecaptcha.reset();
+  }
+  // Si validar() pasa, reCAPTCHA se ejecuta automáticamente
+  // y cuando termina llama a onCaptchaSuccess(token)
+});
+
+/* ── CALLBACK DE reCAPTCHA — Google llama esta función al verificar ──
+   Solo se ejecuta si Google considera que el usuario es humano.
+   Recibe el token que se manda al backend para verificación real ── */
+async function onCaptchaSuccess(recaptchaToken) {
+  console.log('✅ reCAPTCHA verificado:', recaptchaToken.substring(0, 30) + '...');
 
   const user = document.getElementById('usuario').value.trim();
   const pass = document.getElementById('password').value.trim();
-  const btn = document.getElementById('btn-login');
+  const btn  = document.getElementById('btn-login');
 
-  btn.disabled = true;
+  btn.disabled    = true;
   btn.textContent = 'Verificando...';
 
   try {
@@ -85,6 +105,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
       const data = await fetch(`${API}/pacientes`).then(r => r.json());
       console.log('Campos del paciente:', data[0] ? Object.keys(data[0]) : 'Sin datos');
       console.log('Buscando:', user);
+
       const p = data.find(x =>
         String(x.matricula_o_numero_trabajador) === String(user) ||
         String(x.matricula) === String(user)
@@ -97,25 +118,31 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         window.location.href = 'logeopacientes.html';
       } else {
         mostrarError('Matrícula no encontrada.');
+        grecaptcha.reset();
       }
 
     } else {
       const res = await fetch(`${API}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ correo: user, contrasena: pass })
+        body: JSON.stringify({
+          correo: user,
+          contrasena: pass,
+          recaptchaToken  // ← el backend lo verifica con Google
+        })
       });
 
       const data = await res.json();
 
       if (!res.ok) {
         mostrarError(data.message || 'Credenciales inválidas.');
+        grecaptcha.reset();
         return;
       }
 
-      localStorage.setItem('token', data.token);
+      localStorage.setItem('token',   data.token);
       localStorage.setItem('usuario', JSON.stringify(data.usuario));
-      localStorage.setItem('rol', data.usuario.rol);
+      localStorage.setItem('rol',     data.usuario.rol);
 
       if (data.usuario.rol === 'Administrador') {
         window.location.href = 'logeoadmin.html';
@@ -128,17 +155,20 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
   } catch (err) {
     mostrarError('No se pudo conectar al servidor.');
+    grecaptcha.reset();
   } finally {
-    btn.disabled = false;
+    btn.disabled    = false;
     btn.textContent = 'Ingresar al Sistema';
   }
-});
+}
 
+/* ── MOSTRAR ERROR ── */
 function mostrarError(msg) {
   document.getElementById('login-error-msg').textContent = msg;
   document.getElementById('login-error').classList.add('visible');
 }
 
+/* ── LIMPIAR ERRORES AL ESCRIBIR ── */
 document.getElementById('usuario').addEventListener('input', () => {
   document.getElementById('login-error').classList.remove('visible');
 });

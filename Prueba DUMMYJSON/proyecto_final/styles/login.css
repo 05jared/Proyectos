@@ -1,3 +1,5 @@
+/* ── Tu CSS original sin tocar ── */
+
 body {
   background: var(--gris-claro);
   min-height: 100vh;
@@ -80,6 +82,7 @@ body {
   background: var(--crema);
   outline: none;
   transition: border-color .2s, box-shadow .2s;
+  box-sizing: border-box;
 }
 .login-input:focus {
   border-color: var(--azul);
@@ -165,10 +168,25 @@ body {
   line-height: 1.65;
 }
 
+/* ── RESPONSIVE: solo se ajusta el padding de la card ── */
+
 @media (max-width: 520px) {
   .login-card { padding: 36px 24px; }
+}
+@media (max-width: 430px) {
+  .login-card { padding: 32px 20px; }
+  .login-contenido { padding: 24px 16px; }
 }
 @media (max-width: 380px) {
   .login-card { padding: 28px 16px; }
   .login-card-titulo { font-size: 26px; }
+  .login-contenido { padding: 20px 12px; }
+}
+@media (max-width: 360px) {
+  .login-card { padding: 24px 14px; }
+  .login-contenido { padding: 16px 10px; }
+}
+@media (max-width: 320px) {
+  .login-card { padding: 20px 12px; }
+  .login-contenido { padding: 12px 8px; }
 }

@@ -87,6 +87,8 @@ body {
   margin: 36px 0;
 }
 
+/* ── RESPONSIVE ── */
+
 @media (max-width: 860px) {
   .qs-card { padding: 40px 36px; }
 }
@@ -94,4 +96,22 @@ body {
   .qs-card { padding: 32px 20px; }
   .qs-page-titulo { font-size: 26px; }
   .qs-bloque-titulo { font-size: 17px; }
+}
+@media (max-width: 430px) {
+  .qs-card { padding: 28px 16px; }
+  .qs-contenido { padding: 32px 12px 48px; }
+}
+@media (max-width: 380px) {
+  .qs-card { padding: 24px 14px; }
+  .qs-contenido { padding: 24px 10px 40px; }
+  .qs-page-titulo { font-size: 24px; margin-bottom: 32px; }
+}
+@media (max-width: 360px) {
+  .qs-card { padding: 20px 12px; }
+  .qs-contenido { padding: 20px 8px 32px; }
+}
+@media (max-width: 320px) {
+  .qs-card { padding: 16px 10px; }
+  .qs-contenido { padding: 16px 6px 24px; }
+  .qs-page-titulo { font-size: 22px; }
 }

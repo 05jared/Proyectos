@@ -6,6 +6,9 @@
   <title>Acceso al Sistema — Servicio Médico UTHH</title>
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="styles/login.css">
+
+  <!-- reCAPTCHA v2 Invisible -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -82,7 +85,14 @@
           <span id="login-error-msg">Credenciales incorrectas. Verifica e intenta de nuevo.</span>
         </div>
 
-        <button type="submit" class="btn-login" id="btn-login">
+        <!-- Botón con reCAPTCHA v2 invisible — badge aparece debajo del botón -->
+        <button
+          type="button"
+          class="btn-login g-recaptcha"
+          id="btn-login"
+          data-sitekey="6Lf10JAsAAAAABWnaDSG12ZFATGftmOtc-qF-IZl"
+          data-callback="onCaptchaSuccess"
+          data-badge="inline">
           Ingresar al Sistema
         </button>
 
