@@ -69,33 +69,28 @@ function validar() {
     document.getElementById('error-password').classList.remove('visible');
   }
 
+  // ── Verificar que el checkbox de reCAPTCHA fue marcado ──
+  const captchaToken = grecaptcha.getResponse();
+  if (!captchaToken) {
+    document.getElementById('error-captcha').classList.add('visible');
+    ok = false;
+  } else {
+    document.getElementById('error-captcha').classList.remove('visible');
+  }
+
   return ok;
 }
 
-/* ── INTERCEPTAR CLICK DEL BOTÓN ANTES DE QUE reCAPTCHA ACTÚE ──
-   Si los campos están vacíos, cancela el captcha.
-   Si están llenos, deja que reCAPTCHA se ejecute y llame a onCaptchaSuccess ── */
-document.getElementById('btn-login').addEventListener('click', (e) => {
+/* ── SUBMIT DEL FORMULARIO ── */
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
   document.getElementById('login-error').classList.remove('visible');
-
-  if (!validar()) {
-    // Campos vacíos — cancela todo, reCAPTCHA no se dispara
-    e.stopImmediatePropagation();
-    grecaptcha.reset();
-  }
-  // Si validar() pasa, reCAPTCHA se ejecuta automáticamente
-  // y cuando termina llama a onCaptchaSuccess(token)
-});
-
-/* ── CALLBACK DE reCAPTCHA — Google llama esta función al verificar ──
-   Solo se ejecuta si Google considera que el usuario es humano.
-   Recibe el token que se manda al backend para verificación real ── */
-async function onCaptchaSuccess(recaptchaToken) {
-  console.log('✅ reCAPTCHA verificado:', recaptchaToken.substring(0, 30) + '...');
+  if (!validar()) return;
 
   const user = document.getElementById('usuario').value.trim();
   const pass = document.getElementById('password').value.trim();
-  const btn  = document.getElementById('btn-login');
+  const recaptchaToken = grecaptcha.getResponse();
+  const btn = document.getElementById('btn-login');
 
   btn.disabled    = true;
   btn.textContent = 'Verificando...';
@@ -128,7 +123,7 @@ async function onCaptchaSuccess(recaptchaToken) {
         body: JSON.stringify({
           correo: user,
           contrasena: pass,
-          recaptchaToken  // ← el backend lo verifica con Google
+          recaptchaToken  // ← se manda al backend para verificación real
         })
       });
 
@@ -160,7 +155,7 @@ async function onCaptchaSuccess(recaptchaToken) {
     btn.disabled    = false;
     btn.textContent = 'Ingresar al Sistema';
   }
-}
+});
 
 /* ── MOSTRAR ERROR ── */
 function mostrarError(msg) {

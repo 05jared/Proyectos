@@ -7,8 +7,18 @@
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="styles/login.css">
 
-  <!-- reCAPTCHA v2 Invisible -->
+  <!-- reCAPTCHA v2 Checkbox -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <style>
+    .recaptcha-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 8px 0;
+    }
+    .campo-error { display: none; }
+    .campo-error.visible { display: block; }
+  </style>
 </head>
 <body>
 
@@ -80,19 +90,18 @@
           Como alumno o trabajador solo necesitas ingresar tu matrícula o número de trabajador. No se requiere contraseña.
         </div>
 
+        <!-- ✅ Checkbox reCAPTCHA v2 visible debajo del password -->
+        <div class="recaptcha-wrap">
+          <div class="g-recaptcha" data-sitekey="6LeADZEsAAAAADty8mgCme-MFa8uJhO2q-Ph0OO"></div>
+        </div>
+        <span class="campo-error" id="error-captcha" style="text-align:center;">Por favor confirma que no eres un robot.</span>
+
         <div class="login-error-general" id="login-error">
           <span></span>
           <span id="login-error-msg">Credenciales incorrectas. Verifica e intenta de nuevo.</span>
         </div>
 
-        <!-- Botón con reCAPTCHA v2 invisible — badge aparece debajo del botón -->
-        <button
-          type="button"
-          class="btn-login g-recaptcha"
-          id="btn-login"
-          data-sitekey="6Lf10JAsAAAAABWnaDSG12ZFATGftmOtc-qF-IZl"
-          data-callback="onCaptchaSuccess"
-          data-badge="inline">
+        <button type="submit" class="btn-login" id="btn-login">
           Ingresar al Sistema
         </button>
 
