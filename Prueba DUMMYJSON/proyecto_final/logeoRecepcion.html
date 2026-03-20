@@ -3,31 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consultas — Consultorio UTHH</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="sistema.css">
+  <title>Dashboard — Consultorio UTHH</title>
+  <link rel="stylesheet" href="styles/sistema.css">
 </head>
 <body>
 
   <header class="sys-navbar">
     <div class="sys-navbar-inner">
       <a href="logeoadmin.html" class="sys-navbar-logo">
-        <img src="imagenes/logo.jpg" alt="Logo">
+       <img src="https://res.cloudinary.com/dffswlrkh/image/upload/v1773809668/pxn7noa5cgnykhsrh8fr.jpg" alt="Logo">
         <span class="sys-navbar-nombre">Consultorio UTHH</span>
       </a>
       <nav class="sys-nav-links">
-        <a href="logeoadmin.html">Inicio</a>
-        <a href="consultas.html" class="activo">Consultas</a>
-        <a href="pacientes.html">Pacientes</a>
-        <a href="usuarios.html">Usuarios</a>
+        <a href="logeoRecepcion.html">Inicio</a>
+        <a href="pacientesrecep.html">Pacientes</a>
       </nav>
-      <div class="sys-navbar-derecha">
-        <div class="sys-usuario-info">
-          <div class="sys-usuario-avatar">👤</div>
-          <span id="nombre-usuario">Cargando...</span>
-        </div>
+          <a href="perfil.html" class="sys-usuario-info" style="text-decoration:none; cursor:pointer;">
+      <div class="sys-usuario-avatar">👤</div>
+      <span id="nombre-usuario">Cargando...</span>
+    </a>
         <a href="login.html" class="sys-btn-salir" onclick="cerrarSesion()">Cerrar sesión</a>
       </div>
     </div>
@@ -37,36 +31,40 @@
 
     <div class="sys-page-header">
       <div>
-        <h1 class="sys-page-titulo">Consultas Registradas</h1>
-        <p class="sys-page-sub">Historial de todas las consultas del Servicio Médico.</p>
+        <h1 class="sys-page-titulo" id="titulo-bienvenida">Bienvenido al Sistema</h1>
+        <p class="sys-page-sub">Selecciona una opción del menú para comenzar.</p>
       </div>
     </div>
 
-    <div class="sys-tabla-wrap">
-      <table class="sys-tabla">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Paciente</th>
-            <th>Fecha</th>
-            <th>Hora Entrada</th>
-            <th>Hora Salida</th>
-            <th>Motivo</th>
-            <th class="centro">Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="tabla-consultas">
-          <tr>
-            <td colspan="7" class="sys-cargando">Cargando consultas...</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-card-icono stat-icono-azul"></div>
+        <div>
+          <div class="stat-num" id="total-pacientes"></div>
+          <div class="stat-label">Pacientes registrados</div>
+        </div>
+      </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-icono stat-icono-rojo"></div>
+        <div>
+          <div class="stat-num" id="rol-usuario" style="font-size:18px;line-height:1.4">—</div>
+          <div class="stat-label">Tu rol en el sistema</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sys-card">
+      <h2 class="sys-card-titulo">Accesos rápidos</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px;">
+        <a href="pacientesrecep.html" class="btn-sys-primario btn-sys-verde" style="justify-content:center; padding:16px;">Ver Pacientes</a>
+      </div>
     </div>
 
   </main>
 
   <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
 
-  <script src="js/consultas.js"></script>
+  <script src="js/logeoadmin.js"></script>
 </body>
 </html>

@@ -36,23 +36,23 @@ async function cargarUsuario() {
     const u = data.find(x => x.id_usuarios == idUsuario);
     if (!u) return;
 
-    document.getElementById('input-nombre').value = u.nombre || '';
-    document.getElementById('input-apellido-paterno').value = u.apellido_paterno || '';
-    document.getElementById('input-apellido-materno').value = u.apellido_materno || '';
-    document.getElementById('input-correo').value = u.correo || '';
-    document.getElementById('input-rol').value = u.rol || '';
+    document.getElementById('nombre').value           = u.nombre || '';
+    document.getElementById('apellido_paterno').value  = u.apellido_paterno || '';
+    document.getElementById('apellido_materno').value  = u.apellido_materno || '';
+    document.getElementById('correo').value            = u.correo || '';
+    document.getElementById('rol').value               = u.rol || '';
   } catch (err) {
     console.error('Error al cargar usuario:', err);
   }
 }
 
-async function guardarUsuario() {
-  const nombre = document.getElementById('input-nombre').value.trim();
-  const apellido_paterno = document.getElementById('input-apellido-paterno').value.trim();
-  const apellido_materno = document.getElementById('input-apellido-materno').value.trim();
-  const correo = document.getElementById('input-correo').value.trim();
-  const contrasena = document.getElementById('input-contrasena').value.trim();
-  const rol = document.getElementById('input-rol').value;
+async function registrarUsuario() {
+  const nombre           = document.getElementById('nombre').value.trim();
+  const apellido_paterno = document.getElementById('apellido_paterno').value.trim();
+  const apellido_materno = document.getElementById('apellido_materno').value.trim();
+  const correo           = document.getElementById('correo').value.trim();
+  const contrasena       = document.getElementById('contrasena').value.trim();
+  const rol              = document.getElementById('rol').value;
 
   if (!nombre || !apellido_paterno || !correo || !rol) {
     mostrarToast('Completa los campos obligatorios.', 'error');
@@ -64,7 +64,7 @@ async function guardarUsuario() {
     return;
   }
 
-  const btn = document.getElementById('btn-guardar');
+  const btn = document.getElementById('btn-registrar');
   btn.disabled = true;
   btn.textContent = 'Guardando...';
 
@@ -78,7 +78,10 @@ async function guardarUsuario() {
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify(body)
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || err.error || `Error ${res.status}`);
+      }
       mostrarToast('Usuario actualizado.', 'ok');
     } else {
       const res = await fetch(`${API}/usuarios`, {
@@ -86,17 +89,24 @@ async function guardarUsuario() {
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify(body)
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        const errBody = await res.text();
+        console.error('Respuesta API (400):', errBody);
+        let errJson = {};
+        try { errJson = JSON.parse(errBody); } catch {}
+        throw new Error(errJson.message || errJson.error || errJson.msg || errBody || `Error ${res.status}`);
+      }
       mostrarToast('Usuario registrado.', 'ok');
     }
 
     setTimeout(() => window.location.href = 'usuarios.html', 1500);
 
   } catch (err) {
-    mostrarToast('Error al guardar.', 'error');
+    console.error('Error al guardar usuario:', err);
+    mostrarToast(`Error: ${err.message}`, 'error');
   } finally {
     btn.disabled = false;
-    btn.textContent = '💾 Guardar Usuario';
+    btn.textContent = '✔ Registrar usuario';
   }
 }
 

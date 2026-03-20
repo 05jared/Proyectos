@@ -114,7 +114,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
       if (data.usuario.rol === 'Administrador') {
         window.location.href = 'logeoadmin.html';
       } else if (data.usuario.rol === 'Recepcionista') {
-        window.location.href = 'plantilla_recepcion.html';
+        window.location.href = 'logeoRecepcion.html';
       } else {
         window.location.href = 'plantilla.html';
       }

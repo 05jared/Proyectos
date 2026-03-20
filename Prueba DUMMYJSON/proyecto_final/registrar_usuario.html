@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Usuario — Consultorio UTHH</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Registrar Usuario — Consultorio UTHH</title>
   <link rel="stylesheet" href="styles/sistema.css">
 </head>
 <body>
@@ -21,7 +18,8 @@
         <a href="logeoadmin.html">Inicio</a>
         <a href="consultas.html">Consultas</a>
         <a href="pacientes.html">Pacientes</a>
-        <a href="usuarios.html" class="activo">Usuarios</a>
+        <a href="usuarios.html">Usuarios</a>
+        <a href="noticias.html">Noticias</a>
       </nav>
       <div class="sys-navbar-derecha">
         <div class="sys-usuario-info">
@@ -33,56 +31,58 @@
     </div>
   </header>
 
-  <main class="sys-main">
+  <main class="sys-main" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
 
-    <div class="sys-page-header">
+    <div class="sys-page-header" style="width:100%; max-width:560px;">
       <div>
-        <h1 class="sys-page-titulo" id="titulo-pagina">Nuevo Usuario</h1>
-        <p class="sys-page-sub">Completa los datos del usuario.</p>
+        <h1 class="sys-page-titulo" id="titulo-pagina">Registrar Usuario</h1>
+        <p class="sys-page-sub">Complete todos los campos para crear la cuenta.</p>
       </div>
       <a href="usuarios.html" class="btn-sys-primario" style="background:var(--texto-suave);">← Volver</a>
     </div>
 
-    <div class="sys-card" style="max-width:560px;">
-      <h2 class="sys-card-titulo">🔑 Datos del Usuario</h2>
+    <div class="sys-card" style="width:100%; max-width:560px;">
+      <h2 class="sys-card-titulo">👤 Datos del nuevo usuario</h2>
 
       <div class="modal-campo">
-        <label class="modal-label">Nombre *</label>
-        <input type="text" class="modal-input" id="input-nombre" placeholder="Nombre(s)">
+        <label class="modal-label">Nombre(s) *</label>
+        <input type="text" class="modal-input" id="nombre" placeholder="ej. María Elena">
       </div>
       <div class="modal-campo">
-        <label class="modal-label">Apellido Paterno *</label>
-        <input type="text" class="modal-input" id="input-apellido-paterno">
+        <label class="modal-label">Apellido paterno *</label>
+        <input type="text" class="modal-input" id="apellido_paterno" placeholder="ej. García">
       </div>
       <div class="modal-campo">
-        <label class="modal-label">Apellido Materno</label>
-        <input type="text" class="modal-input" id="input-apellido-materno">
+        <label class="modal-label">Apellido materno</label>
+        <input type="text" class="modal-input" id="apellido_materno" placeholder="ej. López">
       </div>
       <div class="modal-campo">
-        <label class="modal-label">Correo Electrónico *</label>
-        <input type="email" class="modal-input" id="input-correo" placeholder="correo@uthh.edu.mx">
+        <label class="modal-label">Correo electrónico *</label>
+        <input type="email" class="modal-input" id="correo" placeholder="tu@correo.com">
       </div>
       <div class="modal-campo">
         <label class="modal-label">Contraseña *</label>
-        <input type="password" class="modal-input" id="input-contrasena" placeholder="••••••••">
-        <small style="font-size:11px;color:var(--texto-suave);margin-top:4px;display:block;" id="hint-pass">Mínimo 6 caracteres.</small>
+        <input type="password" class="modal-input" id="contrasena" placeholder="••••••••">
+        <small id="hint-pass" style="font-size:11px;color:var(--texto-suave);margin-top:4px;display:block;">Mínimo 8 caracteres.</small>
       </div>
       <div class="modal-campo">
         <label class="modal-label">Rol *</label>
-        <select class="modal-select" id="input-rol">
+        <select class="modal-select" id="rol">
           <option value="">— Selecciona —</option>
-          <option value="Administrador">Administrador</option>
-          <option value="Recepcionista">Recepcionista</option>
-          <option value="Doctora">Doctora</option>
+          <option value="administrador">Administrador</option>
+          <option value="medico">Médico</option>
+          <option value="enfermera">Enfermera</option>
+          <option value="recepcionista">Recepcionista</option>
         </select>
       </div>
 
       <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:28px;padding-top:20px;border-top:1px solid var(--borde);">
         <a href="usuarios.html" class="btn-modal-cancelar">Cancelar</a>
-        <button class="btn-modal-guardar" id="btn-guardar" onclick="guardarUsuario()" style="padding:12px 32px;font-size:14px;">
-          💾 Guardar Usuario
+        <button class="btn-modal-guardar" id="btn-registrar" onclick="registrarUsuario()" style="padding:12px 32px;font-size:14px;">
+          ✔ Registrar usuario
         </button>
       </div>
+
     </div>
 
   </main>
@@ -91,6 +91,6 @@
 
   <footer class="sys-footer">© 2025 Servicio Médico UTHH — Todos los derechos reservados</footer>
 
-  <script src="js/registrar_usuario.js"></script>
+  <script src="js/registrar-usuario.js"></script>
 </body>
 </html>
